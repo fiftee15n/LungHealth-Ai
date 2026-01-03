@@ -506,17 +506,23 @@
         /* Mobile Menu Toggle */
         .mobile-menu-toggle {
             display: none;
-            background: none;
+            background: linear-gradient(135deg, #1a5f7a 0%, #2e8b9a 100%);
             border: none;
+            color: white;
             font-size: 1.5rem;
-            color: #1a5f7a;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
             cursor: pointer;
-            padding: 8px;
             position: absolute;
-            right: 16px;
-            top: 50%;
-            transform: translateY(-50%);
+            right: 24px;
+            transition: all 0.3s ease;
             z-index: 101;
+        }
+
+        .mobile-menu-toggle:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(26, 95, 122, 0.3);
         }
 
         /* Awareness Tips - Splash Screen Style */
@@ -887,15 +893,32 @@
             .mobile-menu-toggle {
                 display: block;
             }
+
+            .header {
+                flex-wrap: wrap;
+                padding: 16px 24px;
+            }
+
+            .logo {
+                position: relative;
+                left: 0;
+            }
+
+            nav {
+                width: 100%;
+                order: 3;
+            }
             
             .nav-menu {
                 display: none;
                 flex-direction: column;
-                gap: 12px;
                 width: 100%;
-                text-align: center;
-                padding: 16px 0 8px;
-                margin-top: 8px;
+                background: white;
+                padding: 20px 0;
+                gap: 0;
+                box-shadow: 0 10px 30px rgba(26, 95, 122, 0.1);
+                border-radius: 12px;
+                margin-top: 16px;
             }
             
             .nav-menu.active {
@@ -904,11 +927,17 @@
             
             .nav-menu li {
                 width: 100%;
+                text-align: center;
             }
             
             .nav-menu a {
                 display: block;
-                padding: 10px;
+                padding: 12px 24px;
+                font-size: 1rem;
+            }
+
+            .nav-menu a:hover {
+                background: #f5f9fc;
             }
             
             /* Hero Section */
