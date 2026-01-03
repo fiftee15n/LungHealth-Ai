@@ -512,29 +512,54 @@
             cursor: pointer;
             position: absolute;
             right: 24px;
+            top: 50%;
+            transform: translateY(-50%);
             transition: all 0.3s ease;
             z-index: 101;
         }
 
         .mobile-menu-toggle:hover {
-            transform: scale(1.05);
+            transform: translateY(-50%) scale(1.05);
             box-shadow: 0 4px 15px rgba(26, 95, 122, 0.3);
         }
 
         /* Responsive */
+        @media (max-width: 992px) {
+            .supervisors-grid,
+            .researchers-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 35px;
+            }
+        }
+
         @media (max-width: 768px) {
+            /* Header */
             .mobile-menu-toggle {
                 display: block;
             }
 
             .header {
                 flex-wrap: wrap;
-                padding: 16px 24px;
+                padding: 14px 16px;
+                position: relative;
             }
 
             .logo {
-                position: relative;
-                left: 0;
+                position: static;
+            }
+
+            .logo svg {
+                width: 32px;
+                height: 32px;
+            }
+
+            .logo-text {
+                font-size: 1.1rem;
             }
 
             nav {
@@ -547,11 +572,11 @@
                 flex-direction: column;
                 width: 100%;
                 background: white;
-                padding: 20px 0;
+                padding: 16px 0 8px;
                 gap: 0;
                 box-shadow: 0 10px 30px rgba(26, 95, 122, 0.1);
                 border-radius: 12px;
-                margin-top: 16px;
+                margin-top: 12px;
             }
 
             .nav-menu.active {
@@ -565,41 +590,298 @@
 
             .nav-menu a {
                 display: block;
-                padding: 12px 24px;
-                font-size: 1rem;
+                padding: 12px 20px;
+                font-size: 0.95rem;
             }
 
             .nav-menu a:hover {
                 background: #f5f9fc;
             }
 
+            /* Main Content */
             .main-content {
-                padding: 40px 20px;
+                padding: 40px 16px;
+            }
+
+            /* Hero Section */
+            .team-hero {
+                margin-bottom: 50px;
+            }
+
+            .team-hero h1 {
+                font-size: 2rem;
+                margin-bottom: 16px;
+            }
+
+            .team-hero p {
+                font-size: 0.95rem;
+                padding: 0 8px;
+            }
+
+            .university-badge {
+                padding: 12px 24px;
+                margin-top: 24px;
+                gap: 10px;
+            }
+
+            .university-badge img {
+                width: 32px;
+                height: 32px;
+            }
+
+            .university-badge span {
+                font-size: 0.9rem;
+            }
+
+            /* Section Titles */
+            .section-title {
+                margin-bottom: 35px;
+            }
+
+            .section-title h2 {
+                font-size: 1.5rem;
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .section-title p {
+                font-size: 0.95rem;
+            }
+
+            /* Supervisors & Researchers */
+            .supervisors-section,
+            .researchers-section {
+                margin-bottom: 50px;
             }
 
             .supervisors-grid,
             .researchers-grid {
                 grid-template-columns: 1fr;
+                gap: 20px;
             }
 
-            .supervisor-card.primary {
-                max-width: 100%;
+            .supervisor-card,
+            .researcher-card {
+                padding: 28px 20px;
             }
 
-            .team-hero h1 {
-                font-size: 2rem;
+            .role-badge,
+            .researcher-badge {
+                padding: 6px 18px;
+                font-size: 0.75rem;
+                margin-bottom: 20px;
             }
 
-            .team-hero p {
-                font-size: 1rem;
+            .avatar,
+            .researcher-avatar {
+                width: 110px;
+                height: 110px;
+                margin-bottom: 16px;
+                font-size: 2.5rem;
+                border-width: 3px;
             }
 
+            .member-name {
+                font-size: 1.2rem;
+                margin-bottom: 6px;
+            }
+
+            .member-title {
+                font-size: 0.95rem;
+                margin-bottom: 12px;
+            }
+
+            .member-department {
+                font-size: 0.85rem;
+            }
+
+            /* Project Info */
             .project-info {
-                padding: 35px 25px;
+                padding: 35px 20px;
+                border-radius: 20px;
+                margin-bottom: 50px;
+            }
+
+            .project-info h3 {
+                font-size: 1.5rem;
+                margin-bottom: 16px;
+            }
+
+            .project-info p {
+                font-size: 0.95rem;
+            }
+
+            .project-tags {
+                margin-top: 24px;
+                gap: 8px;
+            }
+
+            .project-tag {
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+
+            /* Acknowledgment */
+            .acknowledgment {
+                padding: 30px 20px;
+                border-radius: 16px;
+            }
+
+            .acknowledgment h4 {
+                font-size: 1.1rem;
+                margin-bottom: 12px;
+            }
+
+            .acknowledgment p {
+                font-size: 0.9rem;
+            }
+
+            /* Footer */
+            .footer {
+                padding: 40px 16px 24px;
+                margin-top: 60px;
             }
 
             .footer-content {
                 grid-template-columns: 1fr;
+                gap: 30px;
+                margin-bottom: 30px;
+            }
+
+            .footer-brand h3 {
+                font-size: 1.3rem;
+                margin-bottom: 12px;
+            }
+
+            .footer-brand p {
+                font-size: 0.85rem;
+            }
+
+            .footer-links h4 {
+                font-size: 1rem;
+                margin-bottom: 16px;
+            }
+
+            .footer-links li {
+                margin-bottom: 10px;
+            }
+
+            .footer-links a {
+                font-size: 0.85rem;
+            }
+
+            .footer-bottom {
+                padding-top: 24px;
+            }
+
+            .footer-bottom p {
+                font-size: 0.8rem;
+                line-height: 1.6;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-content {
+                padding: 30px 12px;
+            }
+
+            .team-hero h1 {
+                font-size: 1.7rem;
+            }
+
+            .team-hero p {
+                font-size: 0.9rem;
+            }
+
+            .university-badge {
+                padding: 10px 20px;
+                font-size: 0.85rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.3rem;
+            }
+
+            .section-title p {
+                font-size: 0.85rem;
+            }
+
+            .supervisor-card,
+            .researcher-card {
+                padding: 24px 16px;
+            }
+
+            .avatar,
+            .researcher-avatar {
+                width: 100px;
+                height: 100px;
+                font-size: 2.2rem;
+            }
+
+            .member-name {
+                font-size: 1.1rem;
+            }
+
+            .member-title {
+                font-size: 0.9rem;
+            }
+
+            .member-department {
+                font-size: 0.8rem;
+            }
+
+            .project-info {
+                padding: 28px 16px;
+            }
+
+            .project-info h3 {
+                font-size: 1.3rem;
+            }
+
+            .project-info p {
+                font-size: 0.85rem;
+            }
+
+            .project-tag {
+                padding: 7px 14px;
+                font-size: 0.75rem;
+            }
+
+            .acknowledgment {
+                padding: 24px 16px;
+            }
+
+            .acknowledgment h4 {
+                font-size: 1rem;
+            }
+
+            .acknowledgment p {
+                font-size: 0.85rem;
+            }
+
+            .footer-brand h3 {
+                font-size: 1.2rem;
+            }
+
+            .footer-bottom p {
+                font-size: 0.75rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .team-hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .university-badge {
+                flex-direction: column;
+                gap: 6px;
+                padding: 12px 16px;
+            }
+
+            .project-tag {
+                padding: 6px 12px;
+                font-size: 0.7rem;
             }
         }
     </style>

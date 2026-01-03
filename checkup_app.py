@@ -261,6 +261,248 @@ st.markdown("""
     
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
+    
+    /* Mobile Responsive Styles */
+    @media screen and (max-width: 768px) {
+        /* Main header */
+        .main-header {
+            padding: 1.5rem 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .main-header h1 {
+            font-size: 1.5rem !important;
+            line-height: 1.3;
+        }
+        
+        .main-header p {
+            font-size: 0.85rem !important;
+            margin-top: 0.4rem !important;
+        }
+        
+        /* Patient card */
+        .patient-card {
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .patient-card h3 {
+            font-size: 1rem !important;
+            margin-bottom: 0.8rem !important;
+        }
+        
+        .patient-card p {
+            font-size: 0.85rem !important;
+            margin: 0.3rem 0;
+        }
+        
+        /* Probability cards */
+        .prob-card {
+            padding: 1rem;
+            margin-bottom: 0.7rem;
+        }
+        
+        .prob-card h4 {
+            font-size: 0.85rem !important;
+        }
+        
+        .prob-card p {
+            font-size: 0.8rem !important;
+        }
+        
+        .prob-bar {
+            height: 6px;
+            margin: 0.6rem 0 0.4rem 0;
+        }
+        
+        /* Section titles */
+        .section-title {
+            margin: 2rem 0 1rem 0;
+            padding-bottom: 0.6rem;
+        }
+        
+        .section-title h3 {
+            font-size: 1.1rem !important;
+        }
+        
+        .section-title .icon {
+            font-size: 1.1rem;
+        }
+        
+        /* Action boxes */
+        .action-box, .lifestyle-box {
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 6px;
+        }
+        
+        .action-box h4, .lifestyle-box h4 {
+            font-size: 0.9rem !important;
+            margin-bottom: 0.8rem !important;
+        }
+        
+        .action-box li, .lifestyle-box li {
+            font-size: 0.8rem !important;
+            margin: 0.4rem 0;
+            line-height: 1.4;
+        }
+        
+        .action-box ul, .lifestyle-box ul {
+            padding-left: 1rem;
+        }
+        
+        /* Sidebar adjustments */
+        [data-testid="stSidebar"] {
+            width: 100% !important;
+        }
+        
+        [data-testid="stSidebar"] h3 {
+            font-size: 1.1rem !important;
+        }
+        
+        [data-testid="stSidebar"] p,
+        [data-testid="stSidebar"] .stCaption {
+            font-size: 0.85rem !important;
+        }
+        
+        /* Button styling */
+        .stButton button {
+            font-size: 0.9rem !important;
+            padding: 0.6rem 1.2rem !important;
+        }
+        
+        /* Download button */
+        .stDownloadButton button {
+            font-size: 0.85rem !important;
+            padding: 0.5rem 1rem !important;
+        }
+        
+        /* Image captions */
+        [data-testid="stImageCaption"] {
+            font-size: 0.75rem !important;
+        }
+    }
+    
+    @media screen and (max-width: 480px) {
+        /* Main header */
+        .main-header {
+            padding: 1.2rem 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .main-header h1 {
+            font-size: 1.3rem !important;
+            line-height: 1.2;
+        }
+        
+        .main-header p {
+            font-size: 0.8rem !important;
+        }
+        
+        /* Patient card */
+        .patient-card {
+            padding: 0.8rem;
+            margin-bottom: 1.2rem;
+        }
+        
+        .patient-card h3 {
+            font-size: 0.95rem !important;
+        }
+        
+        .patient-card p {
+            font-size: 0.8rem !important;
+        }
+        
+        /* Probability cards */
+        .prob-card {
+            padding: 0.8rem;
+        }
+        
+        .prob-card h4 {
+            font-size: 0.8rem !important;
+        }
+        
+        .prob-card p {
+            font-size: 0.75rem !important;
+        }
+        
+        /* Section titles */
+        .section-title {
+            margin: 1.5rem 0 0.8rem 0;
+            gap: 0.6rem;
+        }
+        
+        .section-title h3 {
+            font-size: 1rem !important;
+        }
+        
+        .section-title .icon {
+            font-size: 1rem;
+        }
+        
+        /* Action boxes */
+        .action-box, .lifestyle-box {
+            padding: 0.8rem;
+            margin: 0.8rem 0;
+        }
+        
+        .action-box h4, .lifestyle-box h4 {
+            font-size: 0.85rem !important;
+            margin-bottom: 0.6rem !important;
+        }
+        
+        .action-box li, .lifestyle-box li {
+            font-size: 0.75rem !important;
+            margin: 0.3rem 0;
+            line-height: 1.3;
+        }
+        
+        /* Sidebar */
+        [data-testid="stSidebar"] h3 {
+            font-size: 1rem !important;
+        }
+        
+        [data-testid="stSidebar"] p {
+            font-size: 0.8rem !important;
+        }
+        
+        /* Buttons */
+        .stButton button {
+            font-size: 0.85rem !important;
+            padding: 0.5rem 1rem !important;
+        }
+        
+        .stDownloadButton button {
+            font-size: 0.8rem !important;
+            padding: 0.45rem 0.9rem !important;
+        }
+    }
+    
+    @media screen and (max-width: 360px) {
+        .main-header h1 {
+            font-size: 1.1rem !important;
+        }
+        
+        .main-header p {
+            font-size: 0.75rem !important;
+        }
+        
+        .patient-card h3 {
+            font-size: 0.9rem !important;
+        }
+        
+        .section-title h3 {
+            font-size: 0.95rem !important;
+        }
+        
+        .prob-card h4 {
+            font-size: 0.75rem !important;
+        }
+        
+        .action-box li, .lifestyle-box li {
+            font-size: 0.7rem !important;
+        }
+    }
 </style>
 """, unsafe_allow_html=True)
 

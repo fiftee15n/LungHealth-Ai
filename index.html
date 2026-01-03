@@ -257,6 +257,212 @@
             left: -80px;
             transform: translateY(-50%);
         }
+
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            body {
+                padding: 16px;
+            }
+
+            .splash-container {
+                padding: 20px;
+                width: 100%;
+            }
+
+            /* Logo Section */
+            .logo-icon {
+                width: 90px;
+                height: 90px;
+                margin-bottom: 16px;
+            }
+
+            .app-title {
+                font-size: 1.9rem;
+                margin-bottom: 6px;
+            }
+
+            .app-tagline {
+                font-size: 0.95rem;
+            }
+
+            /* Loading Section */
+            .loading-section {
+                margin: 40px 0;
+            }
+
+            .loader {
+                width: 100%;
+                max-width: 280px;
+            }
+
+            .loading-text {
+                font-size: 0.85rem;
+                margin-top: 16px;
+            }
+
+            .loading-percentage {
+                font-size: 1rem;
+                margin-top: 8px;
+            }
+
+            /* Health Tips */
+            .health-tips {
+                margin-top: 40px;
+                padding: 20px;
+                max-width: 100%;
+            }
+
+            .tips-header {
+                margin-bottom: 12px;
+            }
+
+            .tips-icon {
+                width: 18px;
+                height: 18px;
+            }
+
+            .tips-title {
+                font-size: 0.75rem;
+            }
+
+            .tip-content {
+                font-size: 0.9rem;
+                min-height: 60px;
+                padding: 0 8px;
+            }
+
+            /* Pulse Container */
+            .pulse-container {
+                margin-top: 24px;
+                gap: 6px;
+            }
+
+            .pulse-dot {
+                width: 8px;
+                height: 8px;
+            }
+
+            /* Footer */
+            .footer {
+                bottom: 16px;
+            }
+
+            .footer-text {
+                font-size: 0.7rem;
+                padding: 0 16px;
+            }
+
+            /* Background Decorations */
+            .bg-decoration.top-right {
+                width: 250px;
+                height: 250px;
+                top: -100px;
+                right: -100px;
+            }
+
+            .bg-decoration.bottom-left {
+                width: 200px;
+                height: 200px;
+                bottom: -80px;
+                left: -80px;
+            }
+
+            .bg-decoration.center-left {
+                width: 150px;
+                height: 150px;
+                left: -60px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .splash-container {
+                padding: 16px;
+            }
+
+            .logo-icon {
+                width: 80px;
+                height: 80px;
+                margin-bottom: 12px;
+            }
+
+            .app-title {
+                font-size: 1.6rem;
+            }
+
+            .app-tagline {
+                font-size: 0.85rem;
+            }
+
+            .loading-section {
+                margin: 35px 0;
+            }
+
+            .loader {
+                max-width: 240px;
+            }
+
+            .health-tips {
+                margin-top: 35px;
+                padding: 18px;
+            }
+
+            .tip-content {
+                font-size: 0.85rem;
+            }
+
+            .pulse-container {
+                margin-top: 20px;
+            }
+
+            .bg-decoration.top-right {
+                width: 180px;
+                height: 180px;
+                top: -70px;
+                right: -70px;
+            }
+
+            .bg-decoration.bottom-left {
+                width: 150px;
+                height: 150px;
+                bottom: -60px;
+                left: -60px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .app-title {
+                font-size: 1.4rem;
+            }
+
+            .app-tagline {
+                font-size: 0.8rem;
+            }
+
+            .tip-content {
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-height: 700px) and (max-width: 768px) {
+            .loading-section {
+                margin: 25px 0;
+            }
+
+            .health-tips {
+                margin-top: 25px;
+                padding: 16px;
+            }
+
+            .pulse-container {
+                margin-top: 16px;
+            }
+
+            .footer {
+                position: relative;
+                margin-top: 20px;
+                bottom: auto;
+            }
+        }
     </style>
 </head>
 <body>
@@ -328,10 +534,7 @@
         </div>
     </div>
 
-    <!-- Footer -->
-    <div class="footer">
-        <p class="footer-text">Made with <span>♥</span> for better respiratory health</p>
-    </div>
+   
 
     <script>
         // Health tips array
