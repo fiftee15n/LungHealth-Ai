@@ -490,17 +490,93 @@
             }
         }
 
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            background: linear-gradient(135deg, #1a5f7a 0%, #2e8b9a 100%);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            cursor: pointer;
+            position: absolute;
+            right: 24px;
+            transition: all 0.3s ease;
+            z-index: 101;
+        }
+
+        .mobile-menu-toggle:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(26, 95, 122, 0.3);
+        }
+
         @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .header {
+                flex-wrap: wrap;
+                padding: 16px 24px;
+            }
+
+            .logo {
+                position: relative;
+                left: 0;
+            }
+
+            nav {
+                width: 100%;
+                order: 3;
+            }
+
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background: white;
+                padding: 20px 0;
+                gap: 0;
+                box-shadow: 0 10px 30px rgba(26, 95, 122, 0.1);
+                border-radius: 12px;
+                margin-top: 16px;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu li {
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-menu a {
+                display: block;
+                padding: 12px 24px;
+                font-size: 1rem;
+            }
+
+            .nav-menu a:hover {
+                background: #f5f9fc;
+            }
+
+            .main-content {
+                padding: 40px 20px;
+            }
+
             .features-grid {
                 grid-template-columns: 1fr;
             }
             
-            .nav-menu {
-                display: none;
-            }
-            
             .checkup-hero h1 {
                 font-size: 2rem;
+            }
+
+            .checkup-hero p {
+                font-size: 1rem;
             }
             
             .cta-section {
@@ -538,8 +614,10 @@
             <span class="logo-text">LungHealth</span>
         </a>
         
+        <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+        
         <nav>
-            <ul class="nav-menu">
+            <ul class="nav-menu" id="navMenu">
                 <li><a href="home.html">Home</a></li>
                 <li><a href="checkup.html" class="active">Check Up</a></li>
                 <li><a href="resources.html">Resources</a></li>
@@ -690,5 +768,21 @@
     <footer class="footer">
         <p>&copy; 2026 LungHealth Check. AI-powered lung health analysis for early detection and awareness.</p>
     </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+        
+        document.addEventListener('click', function(event) {
+            const navMenu = document.getElementById('navMenu');
+            const toggle = document.querySelector('.mobile-menu-toggle');
+            
+            if (!navMenu.contains(event.target) && !toggle.contains(event.target)) {
+                navMenu.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
