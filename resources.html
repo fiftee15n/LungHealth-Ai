@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LungHealth Check - Resources & Education</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f9fc 0%, #e8f4f8 50%, #dceef5 100%);
+            min-height: 100vh;
+            color: #2c3e50;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 16px 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 20px rgba(26, 95, 122, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            position: absolute;
+            left: 24px;
+        }
+
+        .logo svg {
+            width: 40px;
+            height: 40px;
+        }
+
+        .logo-text {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1a5f7a;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #5a8fa8;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #1a5f7a;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 10px 24px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #1a5f7a;
+            color: #1a5f7a;
+        }
+
+        .btn-outline:hover {
+            background: #1a5f7a;
+            color: white;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #1a5f7a 0%, #2e8b9a 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(26, 95, 122, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(26, 95, 122, 0.4);
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 24px;
+        }
+
+        /* Hero Section */
+        .resources-hero {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .resources-hero h1 {
+            font-size: 3rem;
+            color: #1a5f7a;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #1a5f7a 0%, #2e8b9a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .resources-hero p {
+            font-size: 1.2rem;
+            color: #5a8fa8;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Search Bar */
+        .search-container {
+            max-width: 600px;
+            margin: 30px auto;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 18px 60px 18px 24px;
+            border: 2px solid #e8f4f8;
+            border-radius: 50px;
+            font-size: 1rem;
+            background: white;
+            box-shadow: 0 8px 30px rgba(26, 95, 122, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #4fb3bf;
+            box-shadow: 0 8px 40px rgba(26, 95, 122, 0.12);
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #1a5f7a 0%, #2e8b9a 100%);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .search-btn:hover {
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        .search-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: white;
+        }
+
+        /* Category Tabs */
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .category-tab {
+            padding: 12px 28px;
+            background: white;
+            border: 2px solid transparent;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #5a8fa8;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(26, 95, 122, 0.08);
+        }
+
+        .category-tab:hover {
+            border-color: #4fb3bf;
+            color: #1a5f7a;
+        }
+
+        .category-tab.active {
+            background: linear-gradient(135deg, #1a5f7a 0%, #2e8b9a 100%);
+            color: white;
+            border-color: transparent;
+        }
+
+        /* Resources Grid */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .resource-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(26, 95, 122, 0.08);
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-8px);
+            border-color: #4fb3bf;
+            box-shadow: 0 20px 50px rgba(26, 95, 122, 0.12);
+        }
+
+        .resource-image {
+            height: 180px;
+            background: linear-gradient(135deg, #1a5f7a 0%, #2e8b9a 50%, #4fb3bf 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .resource-image::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+        }
+
+        .resource-icon {
+            font-size: 4rem;
+            z-index: 1;
+        }
+
+        .resource-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 6px 14px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #1a5f7a;
+        }
+
+        .resource-content {
+            padding: 25px;
+        }
+
+        .resource-category {
+            font-size: 0.8rem;
+            color: #4fb3bf;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .resource-card h3 {
+            color: #1a5f7a;
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .resource-card p {
+            color: #5a8fa8;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .resource-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 15px;
+            border-top: 1px solid #e8f4f8;
+        }
+
+        .resource-meta span {
+            font-size: 0.85rem;
+            color: #5a8fa8;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .read-more {
+            color: #1a5f7a;
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: gap 0.3s ease;
+        }
+
+        .read-more:hover {
+            gap: 10px;
+        }
+
+        /* Featured Section */
+        .featured-section {
+            background: linear-gradient(135deg, #1a5f7a 0%, #2e8b9a 50%, #4fb3bf 100%);
+            border-radius: 30px;
+            padding: 60px;
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 60%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+        }
+
+        .featured-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .featured-text h2 {
+            color: white;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .featured-text p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .featured-text .btn {
+            background: white;
+            color: #1a5f7a;
+            padding: 15px 35px;
+            font-size: 1rem;
+        }
+
+        .featured-text .btn:hover {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .featured-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-card h3 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+        }
+
+        .stat-card p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+
+        /* Video Resources */
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: #1a5f7a;
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: #5a8fa8;
+            font-size: 1.1rem;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .video-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(26, 95, 122, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(26, 95, 122, 0.12);
+        }
+
+        .video-thumbnail {
+            height: 200px;
+            background: linear-gradient(135deg, #2c3e50 0%, #1a5f7a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .play-button {
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+        }
+
+        .play-button svg {
+            width: 30px;
+            height: 30px;
+            fill: #1a5f7a;
+            margin-left: 5px;
+        }
+
+        .video-duration {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.85rem;
+        }
+
+        .video-content {
+            padding: 25px;
+        }
+
+        .video-card h3 {
+            color: #1a5f7a;
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+        }
+
+        .video-card p {
+            color: #5a8fa8;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Downloads Section */
+        .downloads-section {
+            background: white;
+            border-radius: 30px;
+            padding: 50px;
+            box-shadow: 0 10px 40px rgba(26, 95, 122, 0.08);
+            margin-bottom: 60px;
+        }
+
+        .downloads-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .download-card {
+            background: linear-gradient(135deg, #f5f9fc 0%, #e8f4f8 100%);
+            border-radius: 16px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+
+        .download-card:hover {
+            border-color: #4fb3bf;
+            transform: translateY(-3px);
+        }
+
+        .download-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #1a5f7a 0%, #2e8b9a 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 1.5rem;
+        }
+
+        .download-card h4 {
+            color: #1a5f7a;
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .download-card p {
+            color: #5a8fa8;
+            font-size: 0.8rem;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            margin-bottom: 60px;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 16px;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 20px rgba(26, 95, 122, 0.06);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: #f5f9fc;
+        }
+
+        .faq-question h4 {
+            color: #1a5f7a;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .faq-toggle {
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, #e8f4f8 0%, #dceef5 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .faq-toggle svg {
+            width: 14px;
+            height: 14px;
+            fill: #1a5f7a;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-toggle {
+            background: linear-gradient(135deg, #1a5f7a 0%, #2e8b9a 100%);
+        }
+
+        .faq-item.active .faq-toggle svg {
+            fill: white;
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+        }
+
+        .faq-answer p {
+            padding: 0 25px 20px;
+            color: #5a8fa8;
+            line-height: 1.7;
+        }
+
+        /* Newsletter */
+        .newsletter-section {
+            background: linear-gradient(135deg, #f5f9fc 0%, #e8f4f8 100%);
+            border-radius: 30px;
+            padding: 50px;
+            text-align: center;
+            border: 2px solid #4fb3bf;
+        }
+
+        .newsletter-section h3 {
+            color: #1a5f7a;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .newsletter-section p {
+            color: #5a8fa8;
+            font-size: 1.05rem;
+            margin-bottom: 30px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+            gap: 12px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 15px 25px;
+            border: 2px solid #e8f4f8;
+            border-radius: 50px;
+            font-size: 1rem;
+            background: white;
+        }
+
+        .newsletter-form input:focus {
+            outline: none;
+            border-color: #4fb3bf;
+        }
+
+        .newsletter-form button {
+            padding: 15px 35px;
+            background: linear-gradient(135deg, #1a5f7a 0%, #2e8b9a 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(26, 95, 122, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a5f7a;
+            color: white;
+            padding: 60px 24px 30px;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .footer-brand p {
+            opacity: 0.8;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .footer-links h4 {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .resources-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .featured-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .downloads-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-menu {
+                display: none;
+            }
+            
+            .resources-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .featured-section {
+                padding: 40px 25px;
+            }
+            
+            .downloads-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <a href="index.html" class="logo">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="45" fill="url(#logoGradient)" opacity="0.15"/>
+                <path d="M50 20C35 20 30 35 30 50C30 65 35 80 50 80C65 80 70 65 70 50C70 35 65 20 50 20Z" fill="url(#logoGradient)"/>
+                <path d="M35 45C30 45 25 50 25 55C25 65 32 70 38 70C44 70 48 65 48 60" stroke="#1a5f7a" stroke-width="3" fill="none"/>
+                <path d="M65 45C70 45 75 50 75 55C75 65 68 70 62 70C56 70 52 65 52 60" stroke="#1a5f7a" stroke-width="3" fill="none"/>
+                <circle cx="50" cy="35" r="8" fill="#4fb3bf"/>
+                <defs>
+                    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#1a5f7a"/>
+                        <stop offset="100%" stop-color="#2e8b9a"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+            <span class="logo-text">LungHealth</span>
+        </a>
+        
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="checkup.html">Check Up</a></li>
+                <li><a href="resources.html" class="active">Resources</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="resources-hero">
+            <h1>📚 Resources & Education</h1>
+            <p>Comprehensive educational materials, guides, and resources to help you understand lung health, cancer prevention, and early detection strategies.</p>
+        </section>
+
+        <!-- Search Bar -->
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Search for articles, guides, videos...">
+            <button class="search-btn">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke="white" stroke-width="2" fill="none"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Category Tabs -->
+        <div class="category-tabs">
+            <button class="category-tab active">All Resources</button>
+            <button class="category-tab">Lung Cancer</button>
+            <button class="category-tab">Prevention</button>
+            <button class="category-tab">Symptoms</button>
+            <button class="category-tab">Treatment</button>
+            <button class="category-tab">Research</button>
+        </div>
+
+        <!-- Resources Grid -->
+        <section class="resources-grid">
+            <article class="resource-card">
+                <div class="resource-image">
+                    <span class="resource-icon">🫁</span>
+                    <span class="resource-badge">Featured</span>
+                </div>
+                <div class="resource-content">
+                    <span class="resource-category">Lung Cancer Basics</span>
+                    <h3>Understanding Lung Cancer: A Complete Guide</h3>
+                    <p>Learn about the different types of lung cancer, how they develop, and what factors increase your risk.</p>
+                    <div class="resource-meta">
+                        <span>📖 15 min read</span>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="resource-card">
+                <div class="resource-image">
+                    <span class="resource-icon">🔬</span>
+                    <span class="resource-badge">New</span>
+                </div>
+                <div class="resource-content">
+                    <span class="resource-category">Screening</span>
+                    <h3>CT Scan Screening: What to Expect</h3>
+                    <p>Everything you need to know about low-dose CT screening for lung cancer detection.</p>
+                    <div class="resource-meta">
+                        <span>📖 10 min read</span>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="resource-card">
+                <div class="resource-image">
+                    <span class="resource-icon">🚭</span>
+                </div>
+                <div class="resource-content">
+                    <span class="resource-category">Prevention</span>
+                    <h3>Smoking Cessation: Your Path to Healthier Lungs</h3>
+                    <p>Practical strategies and resources to help you quit smoking and reduce lung cancer risk.</p>
+                    <div class="resource-meta">
+                        <span>📖 12 min read</span>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="resource-card">
+                <div class="resource-image">
+                    <span class="resource-icon">⚠️</span>
+                </div>
+                <div class="resource-content">
+                    <span class="resource-category">Symptoms</span>
+                    <h3>Early Warning Signs You Shouldn't Ignore</h3>
+                    <p>Recognize the early symptoms of lung problems and when to seek medical attention.</p>
+                    <div class="resource-meta">
+                        <span>📖 8 min read</span>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="resource-card">
+                <div class="resource-image">
+                    <span class="resource-icon">💊</span>
+                </div>
+                <div class="resource-content">
+                    <span class="resource-category">Treatment</span>
+                    <h3>Treatment Options: Surgery, Chemo & Beyond</h3>
+                    <p>An overview of available treatment options including immunotherapy and targeted therapy.</p>
+                    <div class="resource-meta">
+                        <span>📖 18 min read</span>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="resource-card">
+                <div class="resource-image">
+                    <span class="resource-icon">🧬</span>
+                    <span class="resource-badge">Research</span>
+                </div>
+                <div class="resource-content">
+                    <span class="resource-category">Research</span>
+                    <h3>Latest Advances in Lung Cancer Research</h3>
+                    <p>Stay updated on breakthrough discoveries and clinical trials in lung cancer treatment.</p>
+                    <div class="resource-meta">
+                        <span>📖 14 min read</span>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- Featured Section -->
+        <section class="featured-section">
+            <div class="featured-content">
+                <div class="featured-text">
+                    <h2>🇧🇩 Lung Cancer in Bangladesh: Statistics & Awareness</h2>
+                    <p>Bangladesh faces a growing lung cancer burden with over 18,000 new cases annually. Understanding local risk factors, improving awareness, and increasing access to screening are crucial steps in fighting this disease.</p>
+                    <a href="#" class="btn">Read Full Report →</a>
+                </div>
+                <div class="featured-stats">
+                    <div class="stat-card">
+                        <h3>18,000+</h3>
+                        <p>New cases per year</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>85%</h3>
+                        <p>Linked to smoking</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>78%</h3>
+                        <p>Cases in males</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>16,500+</h3>
+                        <p>Deaths annually</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video Resources -->
+        <section class="section-title">
+            <h2>🎬 Video Resources</h2>
+            <p>Watch educational videos from medical experts</p>
+        </section>
+
+        <section class="video-grid">
+            <div class="video-card">
+                <div class="video-thumbnail">
+                    <div class="play-button">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                    </div>
+                    <span class="video-duration">12:45</span>
+                </div>
+                <div class="video-content">
+                    <h3>Understanding Your CT Scan Results</h3>
+                    <p>Dr. Rahman explains how to interpret CT scan findings and what different patterns mean.</p>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="video-thumbnail">
+                    <div class="play-button">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                    </div>
+                    <span class="video-duration">08:30</span>
+                </div>
+                <div class="video-content">
+                    <h3>5 Breathing Exercises for Lung Health</h3>
+                    <p>Simple daily exercises to strengthen your lungs and improve respiratory function.</p>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="video-thumbnail">
+                    <div class="play-button">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                    </div>
+                    <span class="video-duration">15:20</span>
+                </div>
+                <div class="video-content">
+                    <h3>Living with Lung Cancer: Patient Stories</h3>
+                    <p>Inspiring stories from patients who successfully navigated their lung cancer journey.</p>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="video-thumbnail">
+                    <div class="play-button">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                    </div>
+                    <span class="video-duration">10:15</span>
+                </div>
+                <div class="video-content">
+                    <h3>How AI is Revolutionizing Lung Cancer Detection</h3>
+                    <p>Explore how artificial intelligence is improving early detection and diagnosis accuracy.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Downloads Section -->
+        <section class="downloads-section">
+            <div class="section-title">
+                <h2>📥 Downloadable Resources</h2>
+                <p>Free guides, checklists, and educational materials</p>
+            </div>
+
+            <div class="downloads-grid">
+                <div class="download-card">
+                    <div class="download-icon">📋</div>
+                    <h4>Symptom Checklist</h4>
+                    <p>PDF • 2 pages</p>
+                </div>
+                <div class="download-card">
+                    <div class="download-icon">📊</div>
+                    <h4>Risk Assessment Guide</h4>
+                    <p>PDF • 5 pages</p>
+                </div>
+                <div class="download-card">
+                    <div class="download-icon">🍎</div>
+                    <h4>Nutrition for Lung Health</h4>
+                    <p>PDF • 8 pages</p>
+                </div>
+                <div class="download-card">
+                    <div class="download-icon">🏃</div>
+                    <h4>Exercise Recommendations</h4>
+                    <p>PDF • 4 pages</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <div class="section-title">
+                <h2>❓ Frequently Asked Questions</h2>
+                <p>Common questions about lung health and screening</p>
+            </div>
+
+            <div class="faq-container">
+                <div class="faq-item active">
+                    <div class="faq-question">
+                        <h4>Who should get screened for lung cancer?</h4>
+                        <div class="faq-toggle">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Annual lung cancer screening is recommended for adults aged 50-80 who have a 20 pack-year smoking history and currently smoke or have quit within the past 15 years. Consult your doctor if you have risk factors like family history or occupational exposure.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>What is a low-dose CT scan?</h4>
+                        <div class="faq-toggle">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Low-dose CT (LDCT) is a specialized imaging technique that uses significantly less radiation than conventional CT scans. It creates detailed images of the lungs and can detect small nodules that may indicate early-stage cancer.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Can lung cancer be cured if caught early?</h4>
+                        <div class="faq-toggle">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, when detected at an early stage (Stage I), the 5-year survival rate for lung cancer can be as high as 80-90%. This is why early detection through screening is so crucial. Unfortunately, most cases are diagnosed at later stages when symptoms appear.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>How accurate is AI-based lung cancer detection?</h4>
+                        <div class="faq-toggle">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Modern AI systems can achieve accuracy rates of 90-95% in detecting lung nodules and abnormalities. However, AI is designed to assist, not replace, medical professionals. All AI findings should be reviewed and confirmed by qualified radiologists.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>What are the main risk factors for lung cancer?</h4>
+                        <div class="faq-toggle">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The primary risk factors include smoking (responsible for 80-85% of cases), secondhand smoke exposure, radon gas, asbestos and other occupational exposures, air pollution, family history of lung cancer, and previous radiation therapy to the chest.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter -->
+        <section class="newsletter-section">
+            <h3>📬 Stay Informed</h3>
+            <p>Subscribe to our newsletter for the latest lung health resources and updates</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email address">
+                <button type="submit">Subscribe</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>🫁 LungHealth Check</h3>
+                <p>AI-powered lung health analysis platform dedicated to early detection and awareness. Our mission is to make lung cancer screening accessible to everyone.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="checkup.html">Check Up</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#">Articles</a></li>
+                    <li><a href="#">Videos</a></li>
+                    <li><a href="#">Downloads</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="#">Support</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 LungHealth Check. All rights reserved. AI-powered lung health analysis for early detection and awareness.</p>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                const isActive = item.classList.contains('active');
+                
+                // Close all FAQs
+                document.querySelectorAll('.faq-item').forEach(faq => {
+                    faq.classList.remove('active');
+                });
+                
+                // Toggle current
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Category Tab Switching
+        document.querySelectorAll('.category-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.category-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+            });
+        });
+
+        // Search functionality (placeholder)
+        document.querySelector('.search-btn').addEventListener('click', () => {
+            const query = document.querySelector('.search-input').value;
+            if (query) {
+                alert('Searching for: ' + query);
+            }
+        });
+
+        // Newsletter form (placeholder)
+        document.querySelector('.newsletter-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = e.target.querySelector('input').value;
+            if (email) {
+                alert('Thank you for subscribing! You will receive updates at: ' + email);
+                e.target.reset();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+Name: Abdul Jabbar Khan
+Age: 45
+Gender: Male
+Smoking: Non-smoker
+Diagnosis: Infection

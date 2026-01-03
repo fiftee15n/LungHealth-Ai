@@ -1,0 +1,5 @@
+Name: Fatema Khatun
+Age: 62
+Gender: Female
+Smoking: Current smoker
+Diagnosis: Central with patent bronchus

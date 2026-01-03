@@ -1,0 +1,5 @@
+Name: Md. Kamal Hossain
+Age: 58
+Gender: Male
+Smoking: Former smoker
+Diagnosis: Central with patent bronchus

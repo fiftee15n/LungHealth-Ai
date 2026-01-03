@@ -1,0 +1,5 @@
+Name: Nusrat Jahan
+Age: 38
+Gender: Female
+Smoking: Non-smoker
+Diagnosis: Normal

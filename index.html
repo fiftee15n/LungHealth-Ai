@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LungHealth Check - Loading</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f9fc 0%, #e8f4f8 50%, #dceef5 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .splash-container {
+            text-align: center;
+            padding: 40px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Logo Section */
+        .logo-section {
+            margin-bottom: 40px;
+        }
+
+        .logo-icon {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            position: relative;
+        }
+
+        .lung-icon {
+            width: 100%;
+            height: 100%;
+            animation: breathe 3s ease-in-out infinite;
+        }
+
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .app-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1a5f7a;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .app-tagline {
+            font-size: 1.1rem;
+            color: #5a8fa8;
+            font-weight: 400;
+        }
+
+        /* Loading Section */
+        .loading-section {
+            margin: 50px 0;
+        }
+
+        .loader {
+            width: 200px;
+            height: 6px;
+            background: rgba(26, 95, 122, 0.15);
+            border-radius: 10px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .loader-bar {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #1a5f7a, #2e8b9a, #4fb3bf);
+            border-radius: 10px;
+            animation: loading 2.5s ease-in-out forwards;
+            position: relative;
+        }
+
+        .loader-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 30px;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5));
+            animation: shimmer 2.5s ease-in-out infinite;
+        }
+
+        @keyframes loading {
+            0% { width: 0%; }
+            20% { width: 25%; }
+            50% { width: 60%; }
+            80% { width: 85%; }
+            100% { width: 100%; }
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
+        .loading-text {
+            margin-top: 20px;
+            font-size: 0.95rem;
+            color: #5a8fa8;
+            font-weight: 500;
+        }
+
+        .loading-percentage {
+            font-size: 1.1rem;
+            color: #1a5f7a;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        /* Health Tips Section */
+        .health-tips {
+            margin-top: 50px;
+            padding: 25px 30px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(26, 95, 122, 0.08);
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px solid rgba(26, 95, 122, 0.1);
+        }
+
+        .tips-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .tips-icon {
+            width: 20px;
+            height: 20px;
+            fill: #2e8b9a;
+        }
+
+        .tips-title {
+            font-size: 0.85rem;
+            color: #2e8b9a;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .tip-content {
+            font-size: 1rem;
+            color: #3a6a7e;
+            line-height: 1.6;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tip-text {
+            animation: tipFade 4s ease-in-out;
+        }
+
+        @keyframes tipFade {
+            0%, 10% { opacity: 0; transform: translateY(10px); }
+            20%, 80% { opacity: 1; transform: translateY(0); }
+            90%, 100% { opacity: 0; transform: translateY(-10px); }
+        }
+
+        /* Pulse dots */
+        .pulse-container {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 30px;
+        }
+
+        .pulse-dot {
+            width: 10px;
+            height: 10px;
+            background: #4fb3bf;
+            border-radius: 50%;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        .pulse-dot:nth-child(2) { animation-delay: 0.2s; }
+        .pulse-dot:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.3); opacity: 1; }
+        }
+
+        /* Footer */
+        .footer {
+            position: fixed;
+            bottom: 30px;
+            left: 0;
+            right: 0;
+            text-align: center;
+        }
+
+        .footer-text {
+            font-size: 0.8rem;
+            color: #7fa8b8;
+        }
+
+        .footer-text span {
+            color: #e74c3c;
+        }
+
+        /* Background decoration */
+        .bg-decoration {
+            position: fixed;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(79, 179, 191, 0.1), rgba(26, 95, 122, 0.05));
+            z-index: -1;
+        }
+
+        .bg-decoration.top-right {
+            width: 400px;
+            height: 400px;
+            top: -150px;
+            right: -150px;
+        }
+
+        .bg-decoration.bottom-left {
+            width: 300px;
+            height: 300px;
+            bottom: -100px;
+            left: -100px;
+        }
+
+        .bg-decoration.center-left {
+            width: 200px;
+            height: 200px;
+            top: 50%;
+            left: -80px;
+            transform: translateY(-50%);
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Decorations -->
+    <div class="bg-decoration top-right"></div>
+    <div class="bg-decoration bottom-left"></div>
+    <div class="bg-decoration center-left"></div>
+
+    <div class="splash-container">
+        <!-- Logo Section -->
+        <div class="logo-section">
+            <div class="logo-icon">
+                <svg class="lung-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Lungs SVG -->
+                    <defs>
+                        <linearGradient id="lungGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#1a5f7a;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#4fb3bf;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <!-- Left Lung -->
+                    <path d="M35 25 C25 25 15 35 15 50 C15 70 25 85 35 85 C42 85 45 75 45 65 L45 35 C45 30 40 25 35 25" 
+                          fill="url(#lungGradient)" opacity="0.9"/>
+                    <!-- Right Lung -->
+                    <path d="M65 25 C75 25 85 35 85 50 C85 70 75 85 65 85 C58 85 55 75 55 65 L55 35 C55 30 60 25 65 25" 
+                          fill="url(#lungGradient)" opacity="0.9"/>
+                    <!-- Trachea -->
+                    <path d="M47 15 L47 35 M53 15 L53 35 M47 15 C47 12 50 10 50 10 C50 10 53 12 53 15" 
+                          stroke="#1a5f7a" stroke-width="3" fill="none" stroke-linecap="round"/>
+                    <!-- Bronchi -->
+                    <path d="M47 35 C44 38 42 42 40 45 M53 35 C56 38 58 42 60 45" 
+                          stroke="#1a5f7a" stroke-width="2" fill="none" stroke-linecap="round"/>
+                    <!-- Health Cross -->
+                    <rect x="46" y="55" width="8" height="20" rx="2" fill="#ffffff" opacity="0.9"/>
+                    <rect x="41" y="60" width="18" height="8" rx="2" fill="#ffffff" opacity="0.9"/>
+                </svg>
+            </div>
+            <h1 class="app-title">LungHealth Check</h1>
+            <p class="app-tagline">Breathe Better, Live Healthier</p>
+        </div>
+
+        <!-- Loading Section -->
+        <div class="loading-section">
+            <div class="loader">
+                <div class="loader-bar" id="loaderBar"></div>
+            </div>
+            <p class="loading-text" id="loadingText">Initializing health modules...</p>
+            <p class="loading-percentage" id="loadingPercentage">0%</p>
+        </div>
+
+        <!-- Health Tips -->
+        <div class="health-tips">
+            <div class="tips-header">
+                <svg class="tips-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                </svg>
+                <span class="tips-title">Health Awareness</span>
+            </div>
+            <div class="tip-content">
+                <p class="tip-text" id="tipText">Regular lung check-ups can detect issues early and save lives.</p>
+            </div>
+        </div>
+
+        <!-- Pulse Dots -->
+        <div class="pulse-container">
+            <div class="pulse-dot"></div>
+            <div class="pulse-dot"></div>
+            <div class="pulse-dot"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p class="footer-text">Made with <span>♥</span> for better respiratory health</p>
+    </div>
+
+    <script>
+        // Health tips array
+        const healthTips = [
+            "Regular lung check-ups can detect issues early and save lives.",
+            "Deep breathing exercises can improve your lung capacity by up to 15%.",
+            "Avoid smoking — it's the leading cause of lung disease worldwide.",
+            "Indoor air quality matters. Use air purifiers to reduce pollutants.",
+            "Exercise regularly to strengthen your respiratory muscles.",
+            "Stay hydrated — proper hydration keeps lung mucus thin.",
+            "Get vaccinated against flu and pneumonia to protect your lungs.",
+            "Practice good posture to allow your lungs to expand fully."
+        ];
+
+        // Loading status messages
+        const loadingMessages = [
+            "Initializing health modules...",
+            "Loading medical resources...",
+            "Preparing diagnostic tools...",
+            "Setting up secure connection...",
+            "Almost ready..."
+        ];
+
+        let currentTip = 0;
+        let progress = 0;
+
+        // Update loading progress
+        function updateProgress() {
+            const percentage = document.getElementById('loadingPercentage');
+            const loadingText = document.getElementById('loadingText');
+            
+            if (progress <= 100) {
+                percentage.textContent = progress + '%';
+                
+                // Update loading message based on progress
+                if (progress < 20) {
+                    loadingText.textContent = loadingMessages[0];
+                } else if (progress < 40) {
+                    loadingText.textContent = loadingMessages[1];
+                } else if (progress < 60) {
+                    loadingText.textContent = loadingMessages[2];
+                } else if (progress < 80) {
+                    loadingText.textContent = loadingMessages[3];
+                } else {
+                    loadingText.textContent = loadingMessages[4];
+                }
+                
+                progress += 1;
+                setTimeout(updateProgress, 25);
+            } else {
+                loadingText.textContent = "Ready!";
+                // Redirect to home page after loading
+                setTimeout(function() {
+                    window.location.href = 'home.html';
+                }, 500);
+            }
+        }
+
+        // Rotate health tips
+        function rotateTips() {
+            const tipElement = document.getElementById('tipText');
+            tipElement.style.animation = 'none';
+            tipElement.offsetHeight; // Trigger reflow
+            tipElement.style.animation = 'tipFade 4s ease-in-out';
+            
+            currentTip = (currentTip + 1) % healthTips.length;
+            tipElement.textContent = healthTips[currentTip];
+        }
+
+        // Start animations
+        window.onload = function() {
+            updateProgress();
+            setInterval(rotateTips, 4000);
+        };
+    </script>
+</body>
+</html>

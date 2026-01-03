@@ -1,0 +1,1636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LungHealth Check - Home</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f9fc 0%, #e8f4f8 50%, #dceef5 100%);
+            min-height: 100vh;
+            color: #2c3e50;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 16px 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 20px rgba(26, 95, 122, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            position: absolute;
+            left: 24px;
+        }
+
+        .logo svg {
+            width: 40px;
+            height: 40px;
+        }
+
+        .logo-text {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1a5f7a;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #5a8fa8;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #1a5f7a;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 10px 24px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #1a5f7a;
+            color: #1a5f7a;
+        }
+
+        .btn-outline:hover {
+            background: #1a5f7a;
+            color: white;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #1a5f7a 0%, #2e8b9a 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(26, 95, 122, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(26, 95, 122, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #1a5f7a;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-content h1 span {
+            color: #4fb3bf;
+        }
+
+        .hero-content p {
+            font-size: 1.15rem;
+            color: #5a8fa8;
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image svg {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 24px;
+            background: rgba(255, 255, 255, 0.6);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            color: #1a5f7a;
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            color: #5a8fa8;
+            font-size: 1.05rem;
+        }
+
+        .features-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 32px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(26, 95, 122, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(26, 95, 122, 0.15);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #e8f4f8 0%, #dceef5 100%);
+            border-radius: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .feature-icon svg {
+            width: 30px;
+            height: 30px;
+            color: #1a5f7a;
+        }
+
+        .feature-card h3 {
+            font-size: 1.2rem;
+            color: #1a5f7a;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: #6b8a9a;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 60px 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 5px 20px rgba(26, 95, 122, 0.06);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1a5f7a;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            color: #5a8fa8;
+            font-size: 0.95rem;
+        }
+
+        /* Lung Cancer Awareness Section */
+        .awareness {
+            padding: 80px 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .awareness-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .awareness-text h2 {
+            font-size: 2.2rem;
+            color: #1a5f7a;
+            margin-bottom: 20px;
+        }
+
+        .awareness-text h2 span {
+            color: #e74c3c;
+        }
+
+        .awareness-text > p {
+            color: #5a8fa8;
+            line-height: 1.8;
+            margin-bottom: 24px;
+            font-size: 1.05rem;
+        }
+
+        .bd-stats {
+            background: linear-gradient(135deg, #1a5f7a 0%, #2e8b9a 100%);
+            border-radius: 20px;
+            padding: 28px;
+            margin: 30px 0;
+            color: white;
+        }
+
+        .bd-stats h3 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .bd-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .bd-stat-item {
+            text-align: center;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .bd-stat-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.03);
+        }
+
+        .bd-stat-item .number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .bd-stat-item .label {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        /* Symptoms Section */
+        .symptoms-section h3 {
+            font-size: 1.3rem;
+            color: #1a5f7a;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .symptoms-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .symptom-item {
+            position: relative;
+            padding: 24px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(26, 95, 122, 0.1);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+            border: 2px solid transparent;
+        }
+
+        .symptom-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(231, 76, 60, 0.05) 0%, rgba(231, 76, 60, 0.02) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .symptom-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: rgba(231, 76, 60, 0.3);
+            box-shadow: 0 15px 40px rgba(231, 76, 60, 0.15);
+        }
+
+        .symptom-item:hover::before {
+            opacity: 1;
+        }
+
+        .symptom-item.active {
+            border-color: #1a5f7a;
+            background: linear-gradient(135deg, #f5f9fc 0%, #e8f4f8 100%);
+        }
+
+        .symptom-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 12px;
+        }
+
+        .symptom-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            border-radius: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+            box-shadow: 0 8px 20px rgba(231, 76, 60, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .symptom-item:hover .symptom-icon {
+            transform: rotate(-5deg) scale(1.1);
+        }
+
+        .symptom-icon svg {
+            width: 26px;
+            height: 26px;
+            color: white;
+        }
+
+        .symptom-content h4 {
+            font-size: 1.1rem;
+            color: #1a5f7a;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .symptom-number {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, #e8f4f8 0%, #dceef5 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #1a5f7a;
+        }
+
+        .symptom-content p {
+            font-size: 0.9rem;
+            color: #6b8a9a;
+            line-height: 1.6;
+            margin: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .symptom-item.active .symptom-content p,
+        .symptom-item:hover .symptom-content p {
+            max-height: 100px;
+            opacity: 1;
+            margin-top: 12px;
+        }
+
+        .symptom-severity {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(26, 95, 122, 0.1);
+        }
+
+        .severity-label {
+            font-size: 0.75rem;
+            color: #5a8fa8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .severity-dots {
+            display: flex;
+            gap: 4px;
+        }
+
+        .severity-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #dceef5;
+        }
+
+        .severity-dot.active {
+            background: #e74c3c;
+        }
+
+        @media (max-width: 768px) {
+            .symptoms-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Awareness Tips - Splash Screen Style */
+        .awareness-tips {
+            margin-top: 30px;
+            padding: 28px 32px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(26, 95, 122, 0.1);
+            border: 1px solid rgba(26, 95, 122, 0.1);
+        }
+
+        .tips-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+
+        .tips-icon {
+            width: 24px;
+            height: 24px;
+            fill: #2e8b9a;
+        }
+
+        .tips-title {
+            font-size: 0.85rem;
+            color: #2e8b9a;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .tips-carousel {
+            position: relative;
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .tip-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+            background: linear-gradient(135deg, #e8f4f8 0%, #dceef5 100%);
+            border-radius: 16px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(50px);
+            transition: all 0.5s ease;
+            box-sizing: border-box;
+        }
+
+        .tip-slide.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+            z-index: 2;
+        }
+
+        .tip-slide.exit {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-50px);
+            z-index: 1;
+        }
+
+        .tip-slide-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #1a5f7a 0%, #2e8b9a 100%);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            box-shadow: 0 6px 20px rgba(26, 95, 122, 0.25);
+        }
+
+        .tip-slide-icon svg {
+            width: 24px;
+            height: 24px;
+            color: white;
+        }
+
+        .tip-slide h4 {
+            font-size: 1.1rem;
+            color: #1a5f7a;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .tip-slide p {
+            font-size: 0.95rem;
+            color: #5a8fa8;
+            line-height: 1.6;
+        }
+
+        /* Carousel Indicators */
+        .tips-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .tip-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(26, 95, 122, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            padding: 0;
+        }
+
+        .tip-indicator:hover {
+            background: rgba(26, 95, 122, 0.4);
+        }
+
+        .tip-indicator.active {
+            background: linear-gradient(135deg, #1a5f7a 0%, #4fb3bf 100%);
+            transform: scale(1.2);
+        }
+
+        /* Pulse Animation */
+        .tips-pulse {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 16px;
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background: #4fb3bf;
+            border-radius: 50%;
+            animation: tipPulse 1.5s ease-in-out infinite;
+        }
+
+        .pulse-dot:nth-child(2) { animation-delay: 0.2s; }
+        .pulse-dot:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes tipPulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.4); opacity: 1; }
+        }
+
+        /* Progress Bar Animation */
+        .risk-indicator {
+            margin-top: 24px;
+        }
+
+        .risk-indicator label {
+            font-size: 0.9rem;
+            color: #5a8fa8;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .risk-bar {
+            height: 10px;
+            background: #e8f4f8;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .risk-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #27ae60, #f1c40f, #e74c3c);
+            border-radius: 10px;
+            width: 0%;
+            animation: fillRisk 2s ease-out forwards;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes fillRisk {
+            to { width: 68%; }
+        }
+
+        .risk-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 6px;
+            font-size: 0.75rem;
+            color: #6b8a9a;
+        }
+
+        @media (max-width: 992px) {
+            .awareness-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 80px 24px;
+            text-align: center;
+            background: linear-gradient(135deg, #1a5f7a 0%, #2e8b9a 100%);
+            margin: 60px 24px;
+            border-radius: 30px;
+            max-width: 1152px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta h2 {
+            font-size: 2.2rem;
+            color: white;
+            margin-bottom: 16px;
+        }
+
+        .cta p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1.1rem;
+            margin-bottom: 32px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-white {
+            background: white;
+            color: #1a5f7a;
+            padding: 14px 36px;
+            font-size: 1rem;
+        }
+
+        .btn-white:hover {
+            background: #f5f9fc;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a5f7a;
+            color: white;
+            padding: 60px 24px 30px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 16px;
+            line-height: 1.6;
+            font-size: 0.9rem;
+        }
+
+        .footer-column h4 {
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+        }
+
+        .social-links a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 60px 24px;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-image {
+                order: -1;
+            }
+
+            .hero-image svg {
+                max-width: 300px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="45" fill="url(#headerGrad)" opacity="0.15"/>
+                <path d="M50 25C42 25 35 32 33 40C28 42 25 48 25 55C25 65 33 73 43 73C45 73 47 72.5 49 72V72C49.5 72 50 72 50 72C50 72 50.5 72 51 72V72C53 72.5 55 73 57 73C67 73 75 65 75 55C75 48 72 42 67 40C65 32 58 25 50 25Z" fill="url(#headerGrad)"/>
+                <path d="M50 35V65M50 45L43 52M50 45L57 52" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                <defs>
+                    <linearGradient id="headerGrad" x1="25" y1="25" x2="75" y2="75">
+                        <stop offset="0%" stop-color="#1a5f7a"/>
+                        <stop offset="100%" stop-color="#4fb3bf"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+            <span class="logo-text">LungHealth</span>
+        </div>
+
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="home.html" class="active">Home</a></li>
+                <li><a href="checkup.html">Check Up</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Your Lung Health <span>Matters</span></h1>
+            <p>Take control of your respiratory wellness with our comprehensive lung health assessment tools. Get personalized insights and recommendations based on your lifestyle and symptoms.</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary">Start Assessment</button>
+                <button class="btn btn-outline">Learn More</button>
+            </div>
+        </div>
+        <div class="hero-image">
+            <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="200" cy="200" r="180" fill="url(#heroGrad)" opacity="0.1"/>
+                <circle cx="200" cy="200" r="140" fill="url(#heroGrad)" opacity="0.1"/>
+                <!-- Left Lung -->
+                <path d="M120 140C100 145 80 170 80 210C80 270 110 310 150 310C165 310 178 305 188 295C195 288 198 278 198 268V180C198 160 185 145 165 140C155 138 140 138 120 140Z" fill="url(#lungGrad)" opacity="0.9"/>
+                <!-- Right Lung -->
+                <path d="M280 140C300 145 320 170 320 210C320 270 290 310 250 310C235 310 222 305 212 295C205 288 202 278 202 268V180C202 160 215 145 235 140C245 138 260 138 280 140Z" fill="url(#lungGrad)" opacity="0.9"/>
+                <!-- Trachea -->
+                <path d="M185 100H215V175C215 185 210 190 200 190C190 190 185 185 185 175V100Z" fill="#1a5f7a"/>
+                <!-- Bronchi -->
+                <path d="M200 165L165 200M200 165L235 200" stroke="#1a5f7a" stroke-width="8" stroke-linecap="round"/>
+                <!-- Health indicators -->
+                <circle cx="100" cy="180" r="8" fill="#4fb3bf"/>
+                <circle cx="300" cy="180" r="8" fill="#4fb3bf"/>
+                <circle cx="150" cy="280" r="6" fill="#2e8b9a"/>
+                <circle cx="250" cy="280" r="6" fill="#2e8b9a"/>
+                <!-- Pulse lines -->
+                <path d="M60 200H75L80 185L90 215L100 195L105 200H120" stroke="#4fb3bf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M280 200H295L300 185L310 215L320 195L325 200H340" stroke="#4fb3bf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <defs>
+                    <linearGradient id="heroGrad" x1="50" y1="50" x2="350" y2="350">
+                        <stop offset="0%" stop-color="#1a5f7a"/>
+                        <stop offset="100%" stop-color="#4fb3bf"/>
+                    </linearGradient>
+                    <linearGradient id="lungGrad" x1="80" y1="140" x2="320" y2="310">
+                        <stop offset="0%" stop-color="#2e8b9a"/>
+                        <stop offset="100%" stop-color="#4fb3bf"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Lung Cancer Awareness Section -->
+    <section class="awareness" id="awareness">
+        <div class="awareness-content">
+            <div class="awareness-text">
+                <h2>Understanding <span>Lung Cancer</span></h2>
+                <p>Lung cancer is one of the most common and serious types of cancer. It begins in the lungs and can spread to other parts of the body. Early detection significantly improves treatment outcomes and survival rates.</p>
+                
+                <div class="bd-stats">
+                    <h3>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        </svg>
+                        Lung Cancer in Bangladesh
+                    </h3>
+                    <div class="bd-stats-grid">
+                        <div class="bd-stat-item" onclick="showStatInfo(this, 'cases')">
+                            <div class="number">18,000+</div>
+                            <div class="label">New Cases Yearly</div>
+                        </div>
+                        <div class="bd-stat-item" onclick="showStatInfo(this, 'deaths')">
+                            <div class="number">16,500+</div>
+                            <div class="label">Annual Deaths</div>
+                        </div>
+                        <div class="bd-stat-item" onclick="showStatInfo(this, 'male')">
+                            <div class="number">78%</div>
+                            <div class="label">Male Patients</div>
+                        </div>
+                        <div class="bd-stat-item" onclick="showStatInfo(this, 'smoking')">
+                            <div class="number">85%</div>
+                            <div class="label">Linked to Smoking</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="risk-indicator">
+                    <label>Lung Cancer Risk Level in Bangladesh (compared to global average)</label>
+                    <div class="risk-bar">
+                        <div class="risk-fill"></div>
+                    </div>
+                    <div class="risk-labels">
+                        <span>Low</span>
+                        <span>Moderate</span>
+                        <span>High</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="symptoms-section">
+                <h3>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e74c3c" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 8v4M12 16h.01"/>
+                    </svg>
+                    Warning Signs & Symptoms
+                </h3>
+                <div class="symptoms-grid">
+                    <div class="symptom-item" onclick="toggleSymptom(this)">
+                        <span class="symptom-number">01</span>
+                        <div class="symptom-header">
+                            <div class="symptom-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                                </svg>
+                            </div>
+                            <div class="symptom-content">
+                                <h4>Persistent Cough</h4>
+                            </div>
+                        </div>
+                        <div class="symptom-content">
+                            <p>A cough that doesn't go away or gets worse over time, lasting more than 2-3 weeks.</p>
+                        </div>
+                        <div class="symptom-severity">
+                            <span class="severity-label">Severity:</span>
+                            <div class="severity-dots">
+                                <span class="severity-dot active"></span>
+                                <span class="severity-dot active"></span>
+                                <span class="severity-dot active"></span>
+                                <span class="severity-dot"></span>
+                                <span class="severity-dot"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="symptom-item" onclick="toggleSymptom(this)">
+                        <span class="symptom-number">02</span>
+                        <div class="symptom-header">
+                            <div class="symptom-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <path d="M8 12h8M12 8v8"/>
+                                </svg>
+                            </div>
+                            <div class="symptom-content">
+                                <h4>Coughing Up Blood</h4>
+                            </div>
+                        </div>
+                        <div class="symptom-content">
+                            <p>Hemoptysis - coughing up blood or rust-colored sputum, even in small amounts.</p>
+                        </div>
+                        <div class="symptom-severity">
+                            <span class="severity-label">Severity:</span>
+                            <div class="severity-dots">
+                                <span class="severity-dot active"></span>
+                                <span class="severity-dot active"></span>
+                                <span class="severity-dot active"></span>
+                                <span class="severity-dot active"></span>
+                                <span class="severity-dot active"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="symptom-item" onclick="toggleSymptom(this)">
+                        <span class="symptom-number">03</span>
+                        <div class="symptom-header">
+                            <div class="symptom-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                                </svg>
+                            </div>
+                            <div class="symptom-content">
+                                <h4>Shortness of Breath</h4>
+                            </div>
+                        </div>
+                        <div class="symptom-content">
+                            <p>Difficulty breathing or wheezing during normal activities you could do before.</p>
+                        </div>
+                        <div class="symptom-severity">
+                            <span class="severity-label">Severity:</span>
+                            <div class="severity-dots">
+                                <span class="severity-dot active"></span>
+                                <span class="severity-dot active"></span>
+                                <span class="severity-dot active"></span>
+                                <span class="severity-dot active"></span>
+                                <span class="severity-dot"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="symptom-item" onclick="toggleSymptom(this)">
+                        <span class="symptom-number">04</span>
+                        <div class="symptom-header">
+                            <div class="symptom-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                                </svg>
+                            </div>
+                            <div class="symptom-content">
+                                <h4>Chest Pain</h4>
+                            </div>
+                        </div>
+                        <div class="symptom-content">
+                            <p>Pain in the chest, shoulder, or back that worsens with deep breathing or coughing.</p>
+                        </div>
+                        <div class="symptom-severity">
+                            <span class="severity-label">Severity:</span>
+                            <div class="severity-dots">
+                                <span class="severity-dot active"></span>
+                                <span class="severity-dot active"></span>
+                                <span class="severity-dot active"></span>
+                                <span class="severity-dot active"></span>
+                                <span class="severity-dot"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="symptom-item" onclick="toggleSymptom(this)">
+                        <span class="symptom-number">05</span>
+                        <div class="symptom-header">
+                            <div class="symptom-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0"/>
+                                </svg>
+                            </div>
+                            <div class="symptom-content">
+                                <h4>Unexplained Weight Loss</h4>
+                            </div>
+                        </div>
+                        <div class="symptom-content">
+                            <p>Losing weight without trying, often accompanied by loss of appetite and fatigue.</p>
+                        </div>
+                        <div class="symptom-severity">
+                            <span class="severity-label">Severity:</span>
+                            <div class="severity-dots">
+                                <span class="severity-dot active"></span>
+                                <span class="severity-dot active"></span>
+                                <span class="severity-dot active"></span>
+                                <span class="severity-dot"></span>
+                                <span class="severity-dot"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="symptom-item" onclick="toggleSymptom(this)">
+                        <span class="symptom-number">06</span>
+                        <div class="symptom-header">
+                            <div class="symptom-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="9" cy="7" r="4"/>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+                                </svg>
+                            </div>
+                            <div class="symptom-content">
+                                <h4>Hoarseness & Fatigue</h4>
+                            </div>
+                        </div>
+                        <div class="symptom-content">
+                            <p>Voice changes, persistent tiredness, and recurring respiratory infections.</p>
+                        </div>
+                        <div class="symptom-severity">
+                            <span class="severity-label">Severity:</span>
+                            <div class="severity-dots">
+                                <span class="severity-dot active"></span>
+                                <span class="severity-dot active"></span>
+                                <span class="severity-dot"></span>
+                                <span class="severity-dot"></span>
+                                <span class="severity-dot"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="awareness-tips">
+                    <div class="tips-header">
+                        <svg class="tips-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                        </svg>
+                        <span class="tips-title">Health Awareness</span>
+                    </div>
+                    
+                    <div class="tips-carousel" id="tipsCarousel">
+                        <div class="tip-slide active" data-index="0">
+                            <div class="tip-slide-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <line x1="4" y1="4" x2="20" y2="20"/>
+                                </svg>
+                            </div>
+                            <h4>Quit Smoking</h4>
+                            <p>The most important step to prevent lung cancer. Seek help from cessation programs and support groups.</p>
+                        </div>
+                        <div class="tip-slide" data-index="1">
+                            <div class="tip-slide-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"/>
+                                </svg>
+                            </div>
+                            <h4>Avoid Secondhand Smoke</h4>
+                            <p>Stay away from areas where people smoke regularly. Secondhand smoke contains over 7,000 chemicals.</p>
+                        </div>
+                        <div class="tip-slide" data-index="2">
+                            <div class="tip-slide-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                                </svg>
+                            </div>
+                            <h4>Regular Screenings</h4>
+                            <p>If you're at high risk, get regular CT scans for early detection. Early diagnosis improves survival rates significantly.</p>
+                        </div>
+                        <div class="tip-slide" data-index="3">
+                            <div class="tip-slide-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                                </svg>
+                            </div>
+                            <h4>Healthy Lifestyle</h4>
+                            <p>Exercise regularly and eat a diet rich in fruits and vegetables. Physical activity strengthens respiratory muscles.</p>
+                        </div>
+                        <div class="tip-slide" data-index="4">
+                            <div class="tip-slide-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+                                </svg>
+                            </div>
+                            <h4>Stay Hydrated</h4>
+                            <p>Drink plenty of water to keep lung mucus thin. Proper hydration helps maintain healthy respiratory function.</p>
+                        </div>
+                        <div class="tip-slide" data-index="5">
+                            <div class="tip-slide-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                    <line x1="16" y1="2" x2="16" y2="6"/>
+                                    <line x1="8" y1="2" x2="8" y2="6"/>
+                                    <line x1="3" y1="10" x2="21" y2="10"/>
+                                </svg>
+                            </div>
+                            <h4>Get Vaccinated</h4>
+                            <p>Protect your lungs with flu and pneumonia vaccines. Vaccination reduces risk of respiratory infections.</p>
+                        </div>
+                    </div>
+
+                    <div class="tips-indicators" id="tipsIndicators">
+                        <button class="tip-indicator active" data-index="0"></button>
+                        <button class="tip-indicator" data-index="1"></button>
+                        <button class="tip-indicator" data-index="2"></button>
+                        <button class="tip-indicator" data-index="3"></button>
+                        <button class="tip-indicator" data-index="4"></button>
+                        <button class="tip-indicator" data-index="5"></button>
+                    </div>
+
+                    <div class="tips-pulse">
+                        <span class="pulse-dot"></span>
+                        <span class="pulse-dot"></span>
+                        <span class="pulse-dot"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="section-header">
+            <h2>Comprehensive Health Tools</h2>
+            <p>Everything you need to monitor, understand, and improve your respiratory health.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 11H3v10h6V11zM21 3h-6v18h6V3zM15 7H9v14h6V7z"/>
+                    </svg>
+                </div>
+                <h3>Health Assessment</h3>
+                <p>Complete a comprehensive questionnaire to evaluate your lung health status and identify potential risk factors.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                    </svg>
+                </div>
+                <h3>Symptom Tracker</h3>
+                <p>Log and monitor your respiratory symptoms over time to identify patterns and track improvements.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 6v6l4 2"/>
+                    </svg>
+                </div>
+                <h3>Daily Reminders</h3>
+                <p>Set personalized reminders for breathing exercises, medication, and health check-ins.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 20V10M18 20V4M6 20v-4"/>
+                    </svg>
+                </div>
+                <h3>Progress Reports</h3>
+                <p>Get detailed insights and visual reports showing your lung health improvements over time.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                    </svg>
+                </div>
+                <h3>Educational Resources</h3>
+                <p>Access a library of articles, videos, and guides about maintaining optimal lung health.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                </div>
+                <h3>Expert Consultation</h3>
+                <p>Connect with healthcare professionals for personalized advice and recommendations.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">50K+</div>
+                <div class="stat-label">Active Users</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">95%</div>
+                <div class="stat-label">Accuracy Rate</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">200+</div>
+                <div class="stat-label">Health Articles</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Support Available</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <h2>Ready to Check Your Lung Health?</h2>
+        <p>Take our free assessment today and get personalized recommendations for better respiratory wellness.</p>
+        <button class="btn btn-white">Start Free Assessment</button>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="logo">
+                    <svg viewBox="0 0 100 100" width="40" height="40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M50 25C42 25 35 32 33 40C28 42 25 48 25 55C25 65 33 73 43 73C45 73 47 72.5 49 72V72C49.5 72 50 72 50 72C50 72 50.5 72 51 72V72C53 72.5 55 73 57 73C67 73 75 65 75 55C75 48 72 42 67 40C65 32 58 25 50 25Z" fill="white"/>
+                        <path d="M50 35V65M50 45L43 52M50 45L57 52" stroke="#1a5f7a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span class="logo-text" style="color: white;">LungHealth</span>
+                </div>
+                <p>Empowering individuals to take control of their respiratory health through accessible tools and expert guidance.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="#">Assessment</a></li>
+                    <li><a href="#">Tracking</a></li>
+                    <li><a href="#">Reports</a></li>
+                    <li><a href="#">Mobile App</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Guides</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#">Terms</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 LungHealth Check. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                    </svg>
+                </a>
+                <a href="#">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+                <a href="#">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Interactive Symptom Toggle
+        function toggleSymptom(element) {
+            const allItems = document.querySelectorAll('.symptom-item');
+            allItems.forEach(item => {
+                if (item !== element) {
+                    item.classList.remove('active');
+                }
+            });
+            element.classList.toggle('active');
+        }
+
+        // Statistics Info Display
+        function showStatInfo(element, type) {
+            const messages = {
+                'cases': 'Bangladesh reports over 18,000 new lung cancer cases annually, making it one of the leading cancers in the country.',
+                'deaths': 'Sadly, lung cancer has a high mortality rate in Bangladesh due to late-stage diagnosis, with over 16,500 deaths per year.',
+                'male': 'Approximately 78% of lung cancer patients in Bangladesh are male, largely due to higher smoking rates among men.',
+                'smoking': 'About 85% of lung cancer cases in Bangladesh are directly linked to tobacco smoking and secondhand smoke exposure.'
+            };
+            
+            // Add pulse animation
+            element.style.animation = 'pulse 0.3s ease';
+            setTimeout(() => {
+                element.style.animation = '';
+            }, 300);
+            
+            // Show alert with info (in production, use a modal)
+            if (messages[type]) {
+                // Create tooltip-like notification
+                showNotification(messages[type]);
+            }
+        }
+
+        // Notification function
+        function showNotification(message) {
+            // Remove existing notification
+            const existing = document.querySelector('.stat-notification');
+            if (existing) existing.remove();
+
+            const notification = document.createElement('div');
+            notification.className = 'stat-notification';
+            notification.innerHTML = `
+                <p>${message}</p>
+                <button onclick="this.parentElement.remove()">×</button>
+            `;
+            notification.style.cssText = `
+                position: fixed;
+                bottom: 30px;
+                right: 30px;
+                background: white;
+                padding: 20px 50px 20px 24px;
+                border-radius: 12px;
+                box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+                max-width: 400px;
+                z-index: 1000;
+                animation: slideIn 0.3s ease;
+                border-left: 4px solid #1a5f7a;
+            `;
+            notification.querySelector('p').style.cssText = `
+                color: #2c3e50;
+                font-size: 0.95rem;
+                line-height: 1.6;
+                margin: 0;
+            `;
+            notification.querySelector('button').style.cssText = `
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                background: none;
+                border: none;
+                font-size: 1.5rem;
+                cursor: pointer;
+                color: #999;
+                padding: 5px;
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                if (notification.parentElement) {
+                    notification.style.animation = 'slideOut 0.3s ease forwards';
+                    setTimeout(() => notification.remove(), 300);
+                }
+            }, 5000);
+        }
+
+        // Add animation keyframes
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+            @keyframes pulse {
+                0%, 100% { transform: scale(1); }
+                50% { transform: scale(1.05); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Animate stats on scroll
+        const observerOptions = {
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.symptom-item, .bd-stat-item').forEach(el => {
+            el.style.opacity = '0';
+            observer.observe(el);
+        });
+
+        // Add fadeInUp animation
+        const fadeStyle = document.createElement('style');
+        fadeStyle.textContent = `
+            @keyframes fadeInUp {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+        `;
+        document.head.appendChild(fadeStyle);
+
+        // Prevention Tips Carousel
+        let currentTipIndex = 0;
+        const tipSlides = document.querySelectorAll('.tip-slide');
+        const tipIndicators = document.querySelectorAll('.tip-indicator');
+        const totalTips = tipSlides.length;
+        let tipInterval = null;
+
+        // Initialize - ensure first slide is visible
+        function initCarousel() {
+            if (tipSlides.length > 0) {
+                tipSlides.forEach((slide, i) => {
+                    slide.classList.remove('active', 'exit');
+                    if (i === 0) {
+                        slide.classList.add('active');
+                    }
+                });
+                tipIndicators.forEach((ind, i) => {
+                    ind.classList.remove('active');
+                    if (i === 0) {
+                        ind.classList.add('active');
+                    }
+                });
+            }
+        }
+
+        function showTip(index) {
+            if (tipSlides.length === 0) return;
+            
+            // Calculate new index
+            let newIndex = index;
+            if (newIndex >= totalTips) newIndex = 0;
+            if (newIndex < 0) newIndex = totalTips - 1;
+
+            // Skip if same slide
+            if (newIndex === currentTipIndex) {
+                return;
+            }
+
+            // Exit current slide
+            tipSlides[currentTipIndex].classList.remove('active');
+            tipSlides[currentTipIndex].classList.add('exit');
+            tipIndicators[currentTipIndex].classList.remove('active');
+
+            // Store old index for cleanup
+            const oldIndex = currentTipIndex;
+            currentTipIndex = newIndex;
+
+            // Show new slide
+            tipSlides[newIndex].classList.add('active');
+            tipIndicators[newIndex].classList.add('active');
+
+            // Clean up exit class after transition
+            setTimeout(() => {
+                tipSlides[oldIndex].classList.remove('exit');
+            }, 500);
+        }
+
+        function nextTip() {
+            showTip(currentTipIndex + 1);
+        }
+
+        // Initialize carousel
+        initCarousel();
+
+        // Auto-rotate tips every 4 seconds
+        tipInterval = setInterval(nextTip, 4000);
+
+        // Click on indicators
+        tipIndicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                clearInterval(tipInterval);
+                showTip(index);
+                tipInterval = setInterval(nextTip, 4000);
+            });
+        });
+
+        // Pause on hover
+        const tipsCarousel = document.getElementById('tipsCarousel');
+        if (tipsCarousel) {
+            tipsCarousel.addEventListener('mouseenter', () => {
+                clearInterval(tipInterval);
+            });
+            tipsCarousel.addEventListener('mouseleave', () => {
+                tipInterval = setInterval(nextTip, 4000);
+            });
+        }
+    </script>
+</body>
+</html>

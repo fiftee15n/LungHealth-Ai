@@ -1,0 +1,5 @@
+Name: Abdur Rahman Chowdhury
+Age: 65
+Gender: Male
+Smoking: Former smoker
+Diagnosis: Peripheral malignancy
