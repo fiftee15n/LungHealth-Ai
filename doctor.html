@@ -280,6 +280,266 @@
             opacity: 0.8;
             font-size: 0.9rem;
         }
+
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            background: linear-gradient(135deg, #1a5f7a 0%, #2e8b9a 100%);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            cursor: pointer;
+            position: absolute;
+            right: 24px;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: all 0.3s ease;
+            z-index: 101;
+        }
+
+        .mobile-menu-toggle:hover {
+            transform: translateY(-50%) scale(1.05);
+            box-shadow: 0 4px 15px rgba(26, 95, 122, 0.3);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            /* Header */
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .header {
+                flex-direction: column;
+                padding: 16px 20px;
+                position: relative;
+                align-items: flex-start;
+            }
+
+            .logo {
+                position: static;
+                margin-bottom: 0;
+            }
+
+            .logo svg {
+                width: 32px;
+                height: 32px;
+            }
+
+            .logo-text {
+                font-size: 1.1rem;
+            }
+
+            .mobile-menu-toggle {
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            nav {
+                width: 100%;
+                order: 3;
+            }
+
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background: white;
+                padding: 16px 0 8px;
+                gap: 0;
+                box-shadow: 0 10px 30px rgba(26, 95, 122, 0.1);
+                border-radius: 12px;
+                margin-top: 16px;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu li {
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-menu a {
+                display: block;
+                padding: 12px 20px;
+                font-size: 0.95rem;
+                color: #5a8fa8;
+            }
+
+            .nav-menu a:hover,
+            .nav-menu a.active {
+                background: #f5f9fc;
+                color: #1a5f7a;
+            }
+
+            /* Main Content */
+            .main-content {
+                padding: 40px 16px;
+            }
+
+            .portal-hero h1 {
+                font-size: 2rem;
+                margin-bottom: 16px;
+            }
+
+            .portal-hero p {
+                font-size: 1rem;
+                padding: 0 8px;
+            }
+
+            .doctor-icon {
+                width: 120px;
+                height: 120px;
+                margin-bottom: 24px;
+            }
+
+            .doctor-icon svg {
+                width: 60px;
+                height: 60px;
+            }
+
+            .coming-soon {
+                padding: 40px 24px;
+                border-radius: 20px;
+            }
+
+            .coming-soon h2 {
+                font-size: 1.8rem;
+                margin-bottom: 12px;
+            }
+
+            .coming-soon p {
+                font-size: 1rem;
+                margin-bottom: 30px;
+            }
+
+            .action-box {
+                padding: 35px 24px;
+                border-radius: 16px;
+            }
+
+            .action-box h3 {
+                font-size: 1.3rem;
+                margin-bottom: 8px;
+            }
+
+            .action-box p {
+                font-size: 0.95rem;
+                margin-bottom: 24px;
+            }
+
+            .big-checkup-btn {
+                padding: 16px 35px;
+                font-size: 1.1rem;
+                gap: 10px;
+            }
+
+            .big-checkup-btn svg {
+                width: 22px;
+                height: 22px;
+            }
+
+            .system-info {
+                padding: 20px 20px;
+                margin-top: 30px;
+            }
+
+            .system-info h4 {
+                font-size: 1rem;
+                margin-bottom: 10px;
+            }
+
+            .system-info p {
+                font-size: 0.9rem;
+            }
+
+            .back-link {
+                padding: 10px 28px;
+                font-size: 0.95rem;
+                margin-top: 28px;
+            }
+
+            .footer {
+                padding: 30px 16px;
+                margin-top: 60px;
+            }
+
+            .footer p {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-content {
+                padding: 30px 12px;
+            }
+
+            .portal-hero h1 {
+                font-size: 1.7rem;
+            }
+
+            .portal-hero p {
+                font-size: 0.9rem;
+            }
+
+            .doctor-icon {
+                width: 100px;
+                height: 100px;
+            }
+
+            .coming-soon {
+                padding: 30px 20px;
+            }
+
+            .coming-soon h2 {
+                font-size: 1.5rem;
+            }
+
+            .coming-soon p {
+                font-size: 0.95rem;
+            }
+
+            .action-box {
+                padding: 28px 20px;
+            }
+
+            .action-box h3 {
+                font-size: 1.15rem;
+            }
+
+            .action-box p {
+                font-size: 0.9rem;
+            }
+
+            .big-checkup-btn {
+                padding: 14px 30px;
+                font-size: 1rem;
+            }
+
+            .system-info {
+                padding: 18px 16px;
+            }
+
+            .system-info h4 {
+                font-size: 0.95rem;
+            }
+
+            .system-info p {
+                font-size: 0.85rem;
+            }
+
+            .back-link {
+                padding: 9px 24px;
+                font-size: 0.9rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -302,8 +562,10 @@
             <span class="logo-text">LungHealth</span>
         </a>
         
+        <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+        
         <nav>
-            <ul class="nav-menu">
+            <ul class="nav-menu" id="navMenu">
                 <li><a href="home.html">Home</a></li>
                 <li><a href="checkup.html" class="active">Check Up</a></li>
                 <li><a href="resources.html">Resources</a></li>
@@ -361,5 +623,19 @@
     <footer class="footer">
         <p>&copy; 2026 LungHealth AI. AI-powered lung health analysis for early detection and awareness.</p>
     </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('navMenu');
+            const toggle = document.querySelector('.mobile-menu-toggle');
+            navMenu.classList.toggle('active');
+            
+            if (navMenu.classList.contains('active')) {
+                toggle.innerHTML = '✕';
+            } else {
+                toggle.innerHTML = '☰';
+            }
+        }
+    </script>
 </body>
 </html>
