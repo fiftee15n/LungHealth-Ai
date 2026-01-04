@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LungHealth AI - Doctor Portal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f9fc 0%, #e8f4f8 50%, #dceef5 100%);
+            min-height: 100vh;
+            color: #2c3e50;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 16px 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 20px rgba(26, 95, 122, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            position: absolute;
+            left: 24px;
+        }
+
+        .logo svg {
+            width: 40px;
+            height: 40px;
+        }
+
+        .logo-text {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1a5f7a;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #5a8fa8;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #1a5f7a;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 24px;
+            text-align: center;
+        }
+
+        .portal-hero {
+            margin-bottom: 60px;
+        }
+
+        .portal-hero h1 {
+            font-size: 3rem;
+            color: #1a5f7a;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #1a5f7a 0%, #2e8b9a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .portal-hero p {
+            font-size: 1.2rem;
+            color: #5a8fa8;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .doctor-icon {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, #e8f4f8 0%, #dceef5 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+        }
+
+        .doctor-icon svg {
+            width: 80px;
+            height: 80px;
+            stroke: #1a5f7a;
+        }
+
+        .coming-soon {
+            background: white;
+            border-radius: 25px;
+            padding: 60px 50px;
+            box-shadow: 0 10px 40px rgba(26, 95, 122, 0.12);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .coming-soon h2 {
+            color: #1a5f7a;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .coming-soon p {
+            color: #5a8fa8;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+
+        .action-box {
+            background: linear-gradient(135deg, #1a5f7a 0%, #2e8b9a 100%);
+            border-radius: 20px;
+            padding: 50px;
+            margin: 30px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .action-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .action-box h3 {
+            color: white !important;
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .action-box p {
+            color: rgba(255, 255, 255, 0.9) !important;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+            font-size: 1.05rem;
+        }
+
+        .big-checkup-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: white;
+            color: #1a5f7a;
+            padding: 20px 50px;
+            border-radius: 50px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .big-checkup-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .big-checkup-btn svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .system-info {
+            background: linear-gradient(135deg, rgba(79, 179, 191, 0.08) 0%, rgba(26, 95, 122, 0.08) 100%);
+            border-left: 4px solid #4fb3bf;
+            border-radius: 15px;
+            padding: 25px 30px;
+            margin-top: 40px;
+            text-align: left;
+        }
+
+        .system-info h4 {
+            color: #1a5f7a;
+            font-size: 1.15rem;
+            margin-bottom: 12px;
+        }
+
+        .system-info p {
+            color: #5a8fa8;
+            font-size: 0.98rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 35px;
+            padding: 12px 35px;
+            background: transparent;
+            color: #1a5f7a;
+            border: 2px solid #1a5f7a;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: #1a5f7a;
+            color: white;
+            transform: translateX(-5px);
+        }
+
+        .back-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #1a5f7a 0%, #2e8b9a 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(26, 95, 122, 0.3);
+        }
+
+        .back-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(26, 95, 122, 0.4);
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a5f7a;
+            color: white;
+            padding: 40px 24px;
+            margin-top: 80px;
+            text-align: center;
+        }
+
+        .footer p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <a href="index.html" class="logo">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="45" fill="url(#logoGradient)" opacity="0.15"/>
+                <path d="M50 20C35 20 30 35 30 50C30 65 35 80 50 80C65 80 70 65 70 50C70 35 65 20 50 20Z" fill="url(#logoGradient)"/>
+                <path d="M35 45C30 45 25 50 25 55C25 65 32 70 38 70C44 70 48 65 48 60" stroke="#1a5f7a" stroke-width="3" fill="none"/>
+                <path d="M65 45C70 45 75 50 75 55C75 65 68 70 62 70C56 70 52 65 52 60" stroke="#1a5f7a" stroke-width="3" fill="none"/>
+                <circle cx="50" cy="35" r="8" fill="#4fb3bf"/>
+                <defs>
+                    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#1a5f7a"/>
+                        <stop offset="100%" stop-color="#2e8b9a"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+            <span class="logo-text">LungHealth</span>
+        </a>
+        
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="checkup.html" class="active">Check Up</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="portal-hero">
+            <div class="doctor-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 14l9-5-9-5-9 5 9 5z"/>
+                    <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
+                    <path d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"/>
+                </svg>
+            </div>
+            
+            <h1>👨‍⚕️ Doctor Portal</h1>
+            <p>Access patient records, review diagnostic results, and manage your patients' lung health assessments</p>
+        </div>
+
+        <div class="coming-soon">
+            <h2>👨‍⚕️ Doctor Portal</h2>
+            <p>AI-Powered Multimodal Lung Diagnostic System</p>
+            
+            <div class="action-box">
+                <h3>Access Diagnostic Platform</h3>
+                <p>Launch the system to review patient cases and AI analysis</p>
+                <a href="https://lunghealth-ai.streamlit.app/" target="_blank" class="big-checkup-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                    </svg>
+                    Launch System
+                </a>
+            </div>
+
+            <div class="system-info">
+                <h4>🔬 System Features</h4>
+                <p><strong>5-Class Classification:</strong> Peripheral Malignancy, Central (with/without Patent Bronchus), Infections, Normal<br>
+                <strong>Imaging:</strong> X-Ray, Lung Window CT, Mediastinal Window CT<br>
+                <strong>Visualization:</strong> Grad-CAM attention heatmaps<br>
+                <strong>Output:</strong> Confidence scores and clinical recommendations</p>
+            </div>
+
+            <div style="text-align: center;">
+                <a href="checkup.html" class="back-link">← Back</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 LungHealth AI. AI-powered lung health analysis for early detection and awareness.</p>
+    </footer>
+</body>
+</html>

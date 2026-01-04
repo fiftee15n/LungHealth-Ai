@@ -6,7 +6,7 @@ from datetime import datetime
 
 # Page configuration
 st.set_page_config(
-    page_title="LungHealth Check - Diagnostic Analysis",
+    page_title="LungHealth AI - Diagnostic Analysis",
     page_icon="🫁",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -861,7 +861,7 @@ def main():
     # Header
     st.markdown("""
     <div class="main-header">
-        <h1>🫁 LungHealth Check - AI Diagnostic Platform</h1>
+        <h1>🫁 LungHealth AI - AI Diagnostic Platform</h1>
         <p>Advanced Multi-Modal Lung Analysis System for Medical Professionals</p>
     </div>
     """, unsafe_allow_html=True)
@@ -1063,7 +1063,7 @@ def main():
     """, unsafe_allow_html=True)
     
     report_text = f"""╔══════════════════════════════════════════════════════════════════╗
-║           LUNGHEALTH CHECK - AI DIAGNOSTIC REPORT                 ║
+║              LUNGHEALTH AI - AI DIAGNOSTIC REPORT                 ║
 ╚══════════════════════════════════════════════════════════════════╝
 
 Generated: {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
@@ -1092,7 +1092,7 @@ LIFESTYLE RECOMMENDATIONS
 {chr(10).join([f"• {rec}" for rec in primary_info["lifestyle"]])}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-© 2026 LungHealth Check - AI Diagnostic Platform
+© 2026 LungHealth AI - AI Diagnostic Platform
 """
     
     st.download_button(

@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LungHealth AI - Patient Portal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f9fc 0%, #e8f4f8 50%, #dceef5 100%);
+            min-height: 100vh;
+            color: #2c3e50;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 16px 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 20px rgba(26, 95, 122, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            position: absolute;
+            left: 24px;
+        }
+
+        .logo svg {
+            width: 40px;
+            height: 40px;
+        }
+
+        .logo-text {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1a5f7a;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #5a8fa8;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #1a5f7a;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 24px;
+            text-align: center;
+        }
+
+        .portal-hero {
+            margin-bottom: 60px;
+        }
+
+        .portal-hero h1 {
+            font-size: 3rem;
+            color: #1a5f7a;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #1a5f7a 0%, #2e8b9a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .portal-hero p {
+            font-size: 1.2rem;
+            color: #5a8fa8;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            background: white;
+            border-radius: 25px;
+            padding: 60px 40px;
+            box-shadow: 0 10px 40px rgba(26, 95, 122, 0.12);
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            color: #1a5f7a;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: #5a8fa8;
+            font-size: 1.05rem;
+            margin-bottom: 50px;
+        }
+
+        .steps-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            position: relative;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .steps-container::before {
+            content: '';
+            position: absolute;
+            top: 30px;
+            left: 12%;
+            right: 12%;
+            height: 3px;
+            background: linear-gradient(90deg, #4fb3bf 0%, #2e8b9a 50%, #4fb3bf 100%);
+            z-index: 0;
+        }
+
+        .step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #1a5f7a 0%, #2e8b9a 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 0 auto 20px;
+            box-shadow: 0 8px 25px rgba(26, 95, 122, 0.3);
+            transition: all 0.4s ease;
+        }
+
+        .step:hover .step-number {
+            transform: scale(1.15) rotate(10deg);
+            box-shadow: 0 12px 35px rgba(26, 95, 122, 0.4);
+        }
+
+        .step h3 {
+            color: #1a5f7a;
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .step p {
+            color: #5a8fa8;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            padding: 0 10px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #1a5f7a 0%, #2e8b9a 50%, #4fb3bf 100%);
+            border-radius: 30px;
+            padding: 80px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+            animation: pulse-bg 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse-bg {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section h2 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.15rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+
+        .start-checkup-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: white;
+            color: #1a5f7a;
+            padding: 20px 50px;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s ease;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .start-checkup-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(26, 95, 122, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .start-checkup-btn:hover::before {
+            left: 100%;
+        }
+
+        .start-checkup-btn:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .start-checkup-btn svg {
+            width: 28px;
+            height: 28px;
+            transition: transform 0.3s ease;
+        }
+
+        .start-checkup-btn:hover svg:last-child {
+            transform: translateX(5px);
+        }
+
+        /* Lung Animation */
+        .lung-animation {
+            position: absolute;
+            right: 50px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        .lung-animation svg {
+            width: 200px;
+            height: 240px;
+            fill: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .steps-container {
+                flex-wrap: wrap;
+                gap: 40px;
+            }
+
+            .steps-container::before {
+                display: none;
+            }
+
+            .step {
+                flex-basis: calc(50% - 20px);
+            }
+
+            .lung-animation {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .portal-hero h1 {
+                font-size: 2rem;
+            }
+
+            .portal-hero p {
+                font-size: 1rem;
+            }
+
+            .how-it-works {
+                padding: 40px 25px;
+            }
+
+            .section-title h2 {
+                font-size: 1.7rem;
+            }
+
+            .steps-container {
+                flex-direction: column;
+            }
+
+            .step {
+                flex-basis: 100%;
+            }
+
+            .cta-section {
+                padding: 50px 30px;
+            }
+
+            .cta-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .cta-section p {
+                font-size: 1rem;
+            }
+
+            .start-checkup-btn {
+                padding: 15px 35px;
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a5f7a;
+            color: white;
+            padding: 40px 24px;
+            margin-top: 80px;
+            text-align: center;
+        }
+
+        .footer p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <a href="index.html" class="logo">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="45" fill="url(#logoGradient)" opacity="0.15"/>
+                <path d="M50 20C35 20 30 35 30 50C30 65 35 80 50 80C65 80 70 65 70 50C70 35 65 20 50 20Z" fill="url(#logoGradient)"/>
+                <path d="M35 45C30 45 25 50 25 55C25 65 32 70 38 70C44 70 48 65 48 60" stroke="#1a5f7a" stroke-width="3" fill="none"/>
+                <path d="M65 45C70 45 75 50 75 55C75 65 68 70 62 70C56 70 52 65 52 60" stroke="#1a5f7a" stroke-width="3" fill="none"/>
+                <circle cx="50" cy="35" r="8" fill="#4fb3bf"/>
+                <defs>
+                    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#1a5f7a"/>
+                        <stop offset="100%" stop-color="#2e8b9a"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+            <span class="logo-text">LungHealth</span>
+        </a>
+        
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="checkup.html" class="active">Check Up</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="portal-hero">
+            <h1>🏥 Patient Portal</h1>
+            <p>Upload your lung CT scans and get instant AI-powered analysis with detailed diagnostic insights</p>
+        </div>
+
+        <!-- How It Works -->
+        <section class="how-it-works">
+            <div class="section-title">
+                <h2>How It Works</h2>
+                <p>Simple 4-step process to get your lung health analysis</p>
+            </div>
+
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Upload Images</h3>
+                    <p>Upload your X-Ray, Lung Window CT, and Mediastinal Window CT scans</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Enter Details</h3>
+                    <p>Provide basic information like age and gender for personalized analysis</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>AI Analysis</h3>
+                    <p>Our multimodal AI processes your images using advanced deep learning</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Get Results</h3>
+                    <p>Receive detailed classification, Grad-CAM visualization, and recommendations</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="lung-animation">
+                <svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse cx="30" cy="60" rx="25" ry="45"/>
+                    <ellipse cx="70" cy="60" rx="25" ry="45"/>
+                    <rect x="45" y="10" width="10" height="40" rx="5"/>
+                </svg>
+            </div>
+            
+            <div class="cta-content">
+                <h2>Ready to Check Your Lung Health?</h2>
+                <p>Upload your medical images and information. Our system will securely store your data for professional AI analysis by your healthcare provider.</p>
+                
+                <a href="run_patient_checkup.bat" class="start-checkup-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    Upload Medical Images
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                    </svg>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 LungHealth AI. AI-powered lung health analysis for early detection and awareness.</p>
+    </footer>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LungHealth Check - Our Team</title>
+    <title>LungHealth AI - Our Team</title>
     <style>
         * {
             margin: 0;
@@ -199,11 +199,17 @@
             grid-template-columns: repeat(2, 1fr);
             gap: 30px;
         }
+        
+        .supervisors-grid.single-card {
+            grid-template-columns: 1fr;
+            max-width: 450px;
+            margin: 0 auto;
+        }
 
         .supervisor-card {
             background: white;
             border-radius: 24px;
-            padding: 40px;
+            padding: 35px;
             text-align: center;
             box-shadow: 0 15px 50px rgba(26, 95, 122, 0.1);
             border: 2px solid transparent;
@@ -248,15 +254,15 @@
         }
 
         .avatar {
-            width: 140px;
-            height: 140px;
+            width: 130px;
+            height: 130px;
             background: linear-gradient(135deg, #e8f4f8 0%, #dceef5 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 20px;
-            font-size: 3rem;
+            font-size: 2.5rem;
             border: 4px solid #4fb3bf;
             overflow: hidden;
         }
@@ -300,6 +306,13 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 30px;
+            justify-items: center;
+        }
+        
+        .researchers-grid.single-card {
+            grid-template-columns: 1fr;
+            max-width: 450px;
+            margin: 0 auto;
         }
 
         .researcher-card {
@@ -530,6 +543,12 @@
                 grid-template-columns: 1fr;
                 gap: 24px;
             }
+            
+            .supervisors-grid.single-card,
+            .researchers-grid.single-card {
+                max-width: 100%;
+                padding: 0 20px;
+            }
 
             .footer-content {
                 grid-template-columns: repeat(2, 1fr);
@@ -544,13 +563,15 @@
             }
 
             .header {
-                flex-wrap: wrap;
-                padding: 14px 16px;
+                flex-direction: column;
+                padding: 16px 20px;
                 position: relative;
+                align-items: flex-start;
             }
 
             .logo {
                 position: static;
+                margin-bottom: 0;
             }
 
             .logo svg {
@@ -560,6 +581,13 @@
 
             .logo-text {
                 font-size: 1.1rem;
+            }
+            
+            .mobile-menu-toggle {
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                transform: translateY(-50%);
             }
 
             nav {
@@ -576,7 +604,7 @@
                 gap: 0;
                 box-shadow: 0 10px 30px rgba(26, 95, 122, 0.1);
                 border-radius: 12px;
-                margin-top: 12px;
+                margin-top: 16px;
             }
 
             .nav-menu.active {
@@ -592,10 +620,13 @@
                 display: block;
                 padding: 12px 20px;
                 font-size: 0.95rem;
+                color: #5a8fa8;
             }
 
-            .nav-menu a:hover {
+            .nav-menu a:hover,
+            .nav-menu a.active {
                 background: #f5f9fc;
+                color: #1a5f7a;
             }
 
             /* Main Content */
@@ -658,6 +689,12 @@
             .researchers-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
+            }
+            
+            .supervisors-grid.single-card,
+            .researchers-grid.single-card {
+                max-width: 100%;
+                padding: 0;
             }
 
             .supervisor-card,
@@ -783,6 +820,11 @@
         @media (max-width: 480px) {
             .main-content {
                 padding: 30px 12px;
+            }
+            
+            .supervisors-grid.single-card,
+            .researchers-grid.single-card {
+                padding: 0;
             }
 
             .team-hero h1 {
@@ -924,7 +966,7 @@
         <!-- Hero Section -->
         <section class="team-hero">
             <h1>👥 Our Team</h1>
-            <p>Meet the dedicated researchers and faculty members behind the LungHealth Check project. Our team combines academic expertise with a passion for improving healthcare accessibility.</p>
+            <p>Meet the dedicated researchers and faculty members behind the LungHealth AI project. Our team combines academic expertise with a passion for improving healthcare accessibility.</p>
             
             <div class="university-badge">
                 <span>🎓</span>
@@ -939,7 +981,7 @@
                 <p>The team who built and developed the project</p>
             </div>
 
-            <div class="researchers-grid">
+            <div class="researchers-grid single-card">
                 <!-- Researcher 1 -->
                 <div class="researcher-card">
                     <span class="researcher-badge">Developer & Researcher</span>
@@ -954,19 +996,6 @@
                     </p>
                 </div>
 
-                <!-- Researcher 2 -->
-                <div class="researcher-card">
-                    <span class="researcher-badge">Developer & Researcher</span>
-                    <div class="researcher-avatar">
-                        <img src="images/Bijoy sir.jpg" alt="Md. Hasan Imam Bijoy">
-                    </div>
-                    <h3 class="member-name">Md. Hasan Imam Bijoy</h3>
-                    <p class="member-title">Lecturer</p>
-                    <p class="member-department">
-                        Department of <strong>Computer Science & Engineering</strong><br>
-                        Daffodil International University
-                    </p>
-                </div>
             </div>
         </section>
 
@@ -1008,10 +1037,58 @@
             </div>
         </section>
 
+        <!-- Mentor Section -->
+        <section class="supervisors-section">
+            <div class="section-title">
+                <h2>🌟 Project Mentor</h2>
+                <p>Expert guidance and technical mentorship</p>
+            </div>
+
+            <div class="supervisors-grid single-card">
+                <!-- Mentor -->
+                <div class="supervisor-card">
+                    <span class="role-badge" style="background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);">Mentor</span>
+                    <div class="avatar">
+                        <img src="images/Bijoy sir.jpg" alt="Md. Hasan Imam Bijoy">
+                    </div>
+                    <h3 class="member-name">Md. Hasan Imam Bijoy</h3>
+                    <p class="member-title">Lecturer</p>
+                    <p class="member-department">
+                        Department of <strong>Computer Science & Engineering</strong><br>
+                        Daffodil International University
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Validation Doctor Section -->
+        <section class="supervisors-section">
+            <div class="section-title">
+                <h2>⚕️ Medical Validation</h2>
+                <p>Clinical expertise and medical validation</p>
+            </div>
+
+            <div class="supervisors-grid single-card">
+                <!-- Validation Doctor -->
+                <div class="supervisor-card">
+                    <span class="role-badge" style="background: linear-gradient(135deg, #27ae60 0%, #229954 100%);">Validation Doctor</span>
+                    <div class="avatar">
+                        <img src="images/alami.jpg" alt="Dr. Al Amin Badhon">
+                    </div>
+                    <h3 class="member-name">Dr. Al Amin Badhon</h3>
+                    <p class="member-title">MBBS, BCS (Health) Cadre</p>
+                    <p class="member-department">
+                        <strong>Medical Officer</strong><br>
+                        National Institute of Diseases of the Chest and Hospital (NIDCH)
+                    </p>
+                </div>
+            </div>
+        </section>
+
         <!-- Project Info -->
         <section class="project-info">
             <h3>🫁 About This Research Project</h3>
-            <p>LungHealth Check is an AI-powered lung health analysis platform developed as a research project at Daffodil International University. The project aims to improve early detection of lung abnormalities using multimodal deep learning techniques, combining X-Ray and CT scan analysis for more accurate diagnostics.</p>
+            <p>LungHealth AI is an AI-powered lung health analysis platform developed as a research project at Daffodil International University. The project aims to improve early detection of lung abnormalities using multimodal deep learning techniques, combining X-Ray and CT scan analysis for more accurate diagnostics.</p>
             
             <div class="project-tags">
                 <span class="project-tag">Deep Learning</span>
@@ -1033,7 +1110,7 @@
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-brand">
-                <h3>🫁 LungHealth Check</h3>
+                <h3>🫁 LungHealth AI</h3>
                 <p>AI-powered lung health analysis platform developed as a research project at Daffodil International University. Dedicated to early detection and awareness.</p>
             </div>
             <div class="footer-links">
@@ -1065,7 +1142,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 LungHealth Check | Research Project | Department of CSE, Daffodil International University</p>
+            <p>&copy; 2026 LungHealth AI | Research Project | Department of CSE, Daffodil International University</p>
         </div>
     </footer>
 
